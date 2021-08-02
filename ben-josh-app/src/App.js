@@ -1,4 +1,5 @@
 import NavBar from "./NavBar";
+import CreatePost from "./CreatePost"
 import CreatePostForm from "./CreatePostForm";
 import PostList from "./PostList";
 import { Switch, Route } from "react-router-dom";
@@ -13,19 +14,21 @@ useState // or useContext
 function App() {
   return (
     <div>
+      
+      <NavBar />
+      <CreatePost />
       <Switch>
 
-        <Route>
-          <NavBar />
+        <Route path="/posts/new">
+          <CreatePostForm />
         </Route>
 
-        <Route>
+        <Route path="/">
           <PostList />
         </Route>
         
       </Switch>
-      <PostList />
-      <CreatePostForm />
+      
     </div>
   );
 }
