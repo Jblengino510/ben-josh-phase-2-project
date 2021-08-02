@@ -6,7 +6,7 @@ function CreatePostForm(){
         <form>
             <input type='text' placeholder='title'></input>
             <input type='text' placeholder='image url'></input>
-            <input type='textarea' placeholder='Text (optional)'></input>
+            <textarea type='text' placeholder='Text (optional)'></textarea>
             <input type='submit' value='post'></input>
         </form>
     )
