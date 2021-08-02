@@ -21,6 +21,7 @@ function App() {
         
       </Switch>
       <PostList />
+      <CreatePostForm />
     </div>
   );
 }
