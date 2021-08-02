@@ -1,7 +1,6 @@
+import Home from "./Home"
 import NavBar from "./NavBar";
-import CreatePost from "./CreatePost"
 import CreatePostForm from "./CreatePostForm";
-import PostList from "./PostList";
 import { Switch, Route } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
 
@@ -16,7 +15,7 @@ function App() {
     <div>
       
       <NavBar />
-      <CreatePost />
+      
       <Switch>
 
         <Route path="/posts/new">
@@ -24,7 +23,7 @@ function App() {
         </Route>
 
         <Route path="/">
-          <PostList />
+          <Home />
         </Route>
         
       </Switch>
