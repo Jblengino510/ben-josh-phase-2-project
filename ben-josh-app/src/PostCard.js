@@ -1,9 +1,9 @@
 import PostDetails from "./PostDetails"
 
-function PostCard(){
+function PostCard({post}){
     return (
         <>
-            <PostDetails />
+            <PostDetails post={post}/>
         </> 
     )
 }
