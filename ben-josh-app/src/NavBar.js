@@ -2,7 +2,13 @@ import SearchPosts from "./SearchPosts"
 
 function NavBar(){
     return (
-        <SearchPosts />
+        <>
+        <div className='navBar'>
+            <h1>Creddit</h1>
+            <SearchPosts />
+            <h3>Login/Signup</h3>
+        </div>
+        </>
     )
 }
 
