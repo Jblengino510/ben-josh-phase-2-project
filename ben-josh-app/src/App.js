@@ -14,8 +14,13 @@ function App() {
         <Route>
           <NavBar />
         </Route>
+
+        <Route>
+          <PostList />
+        </Route>
         
       </Switch>
+      <PostList />
     </div>
   );
 }
