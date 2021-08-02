@@ -2,6 +2,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items:baseline;
     padding: 10px;
 }
-

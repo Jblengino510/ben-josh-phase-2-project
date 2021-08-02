@@ -4,7 +4,11 @@ import PostList from "./PostList";
 import { Switch, Route } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
 
+//benjamin's thoughts on the user object
+/*
+useState // or useContext
 
+*/ 
 
 function App() {
   return (
