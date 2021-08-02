@@ -1,8 +1,12 @@
-
+import PostCard from "./PostCard"
+import { useState, useEffect } from "react"
 
 function PostList(){
     return (
-        null
+        <>
+        <h1>Post List</h1>
+            <PostCard />
+        </>
     )
 }
 
