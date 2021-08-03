@@ -19,9 +19,15 @@ function App() {
         fetch('http://localhost:3001/posts?_embed=comments')
         .then(r=> r.json())
         .then(data=>setPosts(data))
-
     }, [])
 
+
+  function handlePostDelete(id){
+      fetch(`http://localhost:3001/posts/${id}`, {
+        method: 'DELETE'
+      })
+      setPosts(posts.filter(post=> post.id!==id))
+  } 
 
   const searchedPosts = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
 
@@ -38,7 +44,7 @@ function App() {
         </Route>
 
         <Route path="/">
-          <Home posts={searchedPosts} />
+          <Home posts={searchedPosts} handlePostDelete={handlePostDelete} />
         </Route>
         
       </Switch>

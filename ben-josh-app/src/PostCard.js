@@ -1,9 +1,9 @@
 import PostDetails from "./PostDetails"
 
-function PostCard({post}){
+function PostCard({post, handlePostDelete}){
     return (
         <>
-            <PostDetails post={post}/>
+            <PostDetails post={post} handlePostDelete={handlePostDelete}/>
         </> 
     )
 }

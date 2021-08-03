@@ -1,10 +1,10 @@
 import PostCard from "./PostCard"
 import { useState, useEffect } from "react"
 
-function PostList({ posts }){
+function PostList({ posts, handlePostDelete }){
     
 
-    const renderedPosts = posts.map((post)=><PostCard key={post.id} post={post} />)
+    const renderedPosts = posts.map((post)=><PostCard key={post.id} post={post} handlePostDelete={handlePostDelete}/>)
 
     return (
         <>
