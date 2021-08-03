@@ -10,7 +10,7 @@ function PostDetails({ post }){
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>
             <ul>
-                <li>List of comments</li>
+                <li>{post.comments.length} comments</li>
             </ul>
             <Button icon>
                 <Icon name='angle up' />
