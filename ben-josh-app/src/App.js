@@ -34,11 +34,11 @@ function App() {
       <Switch>
 
         <Route path="/posts/new">
-          <CreatePostForm />
+          <CreatePostForm setPosts={setPosts} posts={posts}/>
         </Route>
 
         <Route path="/">
-          <Home posts={searchedPosts}/>
+          <Home posts={searchedPosts} />
         </Route>
         
       </Switch>
