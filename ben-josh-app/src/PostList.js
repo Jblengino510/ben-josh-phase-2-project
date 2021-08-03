@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 function PostList({ posts }){
     
 
-    const renderedPosts = posts.map((post)=><PostCard post={post} />)
+    const renderedPosts = posts.map((post)=><PostCard key={post.id} post={post} />)
 
     return (
         <>

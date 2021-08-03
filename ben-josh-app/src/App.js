@@ -16,7 +16,7 @@ function App() {
   const [posts, setPosts] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:3001/posts/')
+        fetch('http://localhost:3001/posts?_embed=comments')
         .then(r=> r.json())
         .then(data=>setPosts(data))
 
