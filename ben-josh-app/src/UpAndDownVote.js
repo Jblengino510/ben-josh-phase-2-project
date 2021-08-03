@@ -12,7 +12,9 @@ function UpAndDownVote({ post }){
                  method: "PATCH",
                  headers: {'Content-Type': 'application/json'},
                  body: JSON.stringify({
-                     downvotes: post.downvotes +1
+                     downvotes: post.downvotes +1,
+                     upvotes: post.upvotes
+
                  })
              })
              .then(res => res.json())
@@ -38,7 +40,8 @@ function UpAndDownVote({ post }){
                 method: "PATCH",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    upvotes: post.upvotes + 1
+                    upvotes: post.upvotes + 1,
+                    downvotes: post.downvotes
                 })
             })
             .then(res => res.json())

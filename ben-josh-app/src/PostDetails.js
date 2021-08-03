@@ -1,6 +1,6 @@
 import UpAndDownVote from "./UpAndDownVote"
 import CommentForm from "./CommentForm"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { Button, Icon } from 'semantic-ui-react'
 
@@ -10,15 +10,17 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
     const params = useParams()
     console.log(params)
 
-    const [post] = allPosts.filter(post=> post.id === parseInt(params.postId))
-    console.log(post)
-
+    const [post, setPost] = useState({})
     const [ showCommentForm, setShowCommentForm] = useState(false)
 
-   
     const history = useHistory()
-
     let comments = []
+
+    useEffect(() => {
+        fetch(`http://localhost:3001/posts/${params.postId}?_embed=comments`)
+        .then(r=> r.json())
+        .then(data => setPost(data))
+    }, [])
 
     if(post.comments){
         comments = post.comments.map(comment => (
@@ -45,7 +47,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
                 <p>{post.text}</p>
                 {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
                 <ul>
-                    {post.comments ? post.comments.length : 0} {post.comments.length === 1 ? "Comment" : "Comments"}
+                    {post.comments ? post.comments.length  + ( post.comments.length === 1 ? " Comment" : " Comments"): 0 + " Comments"} 
                     {comments}
                 </ul>
                 <span>
