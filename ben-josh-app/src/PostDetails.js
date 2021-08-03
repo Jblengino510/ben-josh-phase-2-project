@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useHistory } from 'react-router-dom'
 import { Button, Icon } from 'semantic-ui-react'
 
-function PostDetails({ post, handlePostDelete }){
+function PostDetails({ post, allPosts, setPosts, handlePostDelete }){
     //fetch the comments for the post
     //https://react.semantic-ui.com/views/card/#types-card-props
     const [ voteCount, setVoteCount ] = useState(post.upvotes-post.downvotes)
@@ -12,6 +12,14 @@ function PostDetails({ post, handlePostDelete }){
     const [ showCommentForm, setShowCommentForm] = useState(false)
 
     const history = useHistory()
+
+    let comments = []
+
+    if(post.comments){
+        comments = post.comments.map(comment => (
+            <li>{comment.comment}</li>
+        ))
+    }
 
     function toggleCommentForm(){
         setShowCommentForm(showCommentForm => !showCommentForm)
@@ -79,9 +87,10 @@ function PostDetails({ post, handlePostDelete }){
             <h3>{post.title}</h3>
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>
-            {!showCommentForm ? null : <CommentForm />}
+            {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
             <ul>
-                <li>{post.comments ? post.comments.length : 0} comments</li>
+                {post.comments ? post.comments.length : 0} {post.comments.length === 1 ? "Comment" : "Comments"}
+                {comments}
             </ul>
             <Button icon name="upVote" onClick={handleUpVote}>
                 <Icon name='angle up' />

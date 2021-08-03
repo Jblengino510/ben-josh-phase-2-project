@@ -20,7 +20,7 @@ function App() {
         .then(r=> r.json())
         .then(data=>setPosts(data))
     }, [])
-
+    
 
   function handlePostDelete(id){
       fetch(`http://localhost:3001/posts/${id}`, {
@@ -44,7 +44,7 @@ function App() {
         </Route>
 
         <Route path="/">
-          <Home posts={searchedPosts} handlePostDelete={handlePostDelete} />
+          <Home posts={searchedPosts} setPosts={setPosts} handlePostDelete={handlePostDelete} />
         </Route>
         
       </Switch>
