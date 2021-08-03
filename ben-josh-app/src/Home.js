@@ -1,11 +1,11 @@
 import CreatePost from "./CreatePost";
 import PostList from "./PostList";
 
-function Home(){
+function Home({ posts }){
     return (
         <>
             <CreatePost />
-            <PostList />
+            <PostList posts={posts}/>
         </>
     )
 }

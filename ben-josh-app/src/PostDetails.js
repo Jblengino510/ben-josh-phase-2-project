@@ -1,6 +1,6 @@
 import { Button, Icon } from 'semantic-ui-react'
 
-function PostDetails({post}){
+function PostDetails({ post }){
     //fetch the comments for the post
     //https://react.semantic-ui.com/views/card/#types-card-props
 

@@ -1,14 +1,8 @@
 import PostCard from "./PostCard"
 import { useState, useEffect } from "react"
 
-function PostList(){
-    const [posts, setPosts] = useState([])
-    useEffect(()=>{
-        fetch('http://localhost:3001/posts/')
-        .then(r=> r.json())
-        .then(data=>setPosts(data))
-
-    }, [])
+function PostList({ posts }){
+    
 
     const renderedPosts = posts.map((post)=><PostCard post={post} />)
 
