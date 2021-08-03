@@ -1,4 +1,6 @@
+import CommentForm from "./CommentForm"
 import { useState } from "react"
+import { useHistory } from 'react-router-dom'
 import { Button, Icon } from 'semantic-ui-react'
 
 function PostDetails({ post, handlePostDelete }){
@@ -7,6 +9,14 @@ function PostDetails({ post, handlePostDelete }){
     const [ voteCount, setVoteCount ] = useState(post.upvotes-post.downvotes)
     const [ downVoteClicked, setDownVoteClicked ] = useState(false)
     const [ upVoteClicked, setUpVoteClicked ] = useState(false)
+    const [ showCommentForm, setShowCommentForm] = useState(false)
+
+    const history = useHistory()
+
+    function toggleCommentForm(){
+        setShowCommentForm(showCommentForm => !showCommentForm)
+        history.push(`/posts/${post.id}`)
+    }
 
     function handleDownVote(){
         if (downVoteClicked === false){
@@ -69,6 +79,7 @@ function PostDetails({ post, handlePostDelete }){
             <h3>{post.title}</h3>
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>
+            {!showCommentForm ? null : <CommentForm />}
             <ul>
                 <li>{post.comments ? post.comments.length : 0} comments</li>
             </ul>
@@ -78,6 +89,9 @@ function PostDetails({ post, handlePostDelete }){
             <span>{voteCount}</span>
             <Button icon name="downVote" onClick={handleDownVote}>
                 <Icon name='angle down' />
+            </Button>
+            <Button icon name="comment" onClick={toggleCommentForm}>
+                <Icon name='comment' />
             </Button>
             <Button icon name="delete" onClick={handleDelete}>
                 <Icon name='trash' />
