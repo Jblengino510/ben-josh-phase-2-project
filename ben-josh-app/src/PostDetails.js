@@ -45,6 +45,16 @@ function PostDetails({ post, handlePostDelete }){
             })
             .then(res => res.json())
             .then(data => setVoteCount(data.upvotes - data.downvotes))
+       }else{
+            fetch(`http://localhost:3001/posts/${post.id}`, {
+            method: "PATCH",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                upvotes: post.upvotes
+            })
+        })
+        .then(res => res.json())
+        .then(data => setVoteCount(data.upvotes - data.downvotes))
        }
         setUpVoteClicked(upVoteClicked => !upVoteClicked)  
         setDownVoteClicked(false)  
