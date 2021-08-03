@@ -24,7 +24,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
 
     if(post.comments){
         comments = post.comments.map(comment => (
-            <li>{comment.comment}</li>
+            <li key={comment.id}>{comment.comment}</li>
         ))
     }
 
