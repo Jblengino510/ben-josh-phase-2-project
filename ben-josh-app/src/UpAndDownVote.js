@@ -2,7 +2,9 @@ import { useState } from "react"
 import { Button, Icon } from 'semantic-ui-react'
 
 function UpAndDownVote({ post }){
-    const [ voteCount, setVoteCount ] = useState(post.upvotes-post.downvotes)
+    console.log("post: ", post)
+    const initVotes = post.upvotes - post.downvotes
+    const [ voteCount, setVoteCount ] = useState(initVotes)
     const [ downVoteClicked, setDownVoteClicked ] = useState(false)
     const [ upVoteClicked, setUpVoteClicked ] = useState(false)
     
@@ -14,7 +16,6 @@ function UpAndDownVote({ post }){
                  body: JSON.stringify({
                      downvotes: post.downvotes +1,
                      upvotes: post.upvotes
-
                  })
              })
              .then(res => res.json())
@@ -34,6 +35,14 @@ function UpAndDownVote({ post }){
         setUpVoteClicked(false)
     }
 
+    // if(!voteCount){
+    //     if(voteCount === 0){}else{
+    //     setVoteCount(parseInt(post.upvotes)-parseInt(post.downvotes))
+    //     console.log(voteCount)
+    //     }
+    // }
+    
+    
     function handleUpVote(){
         if (upVoteClicked === false){
             fetch(`http://localhost:3001/posts/${post.id}`, {
@@ -61,15 +70,12 @@ function UpAndDownVote({ post }){
         setDownVoteClicked(false)  
     }
 
-    
-
-
     return (
         <div className='voteButtons'>
             <Button icon name="upVote" onClick={handleUpVote}>
                 <Icon name='angle up' />
             </Button>
-            <span>{voteCount}</span>
+            <span>{post.upvotes ? post.upvotes - post.downvotes : null}</span>
             <Button icon name="downVote" onClick={handleDownVote}>
                 <Icon name='angle down' />
             </Button>
