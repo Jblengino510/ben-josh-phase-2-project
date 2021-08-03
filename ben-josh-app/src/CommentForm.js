@@ -32,7 +32,7 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
             } else {
                 post.comments = [data]
             }
-            setPosts(allPosts)
+            setPosts([...allPosts])
         })
         setCommentData({
             "comment": "",

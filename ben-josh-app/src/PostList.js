@@ -8,7 +8,6 @@ function PostList({ posts, setPosts, handlePostDelete }){
 
     return (
         <>
-        <h1>Post List</h1>
             {renderedPosts}
         </>
     )

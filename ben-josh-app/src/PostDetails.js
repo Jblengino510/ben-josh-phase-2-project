@@ -1,3 +1,4 @@
+import UpAndDownVote from "./UpAndDownVote"
 import CommentForm from "./CommentForm"
 import { useState } from "react"
 import { useHistory, useParams } from 'react-router-dom'
@@ -12,10 +13,6 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
     const [post] = allPosts.filter(post=> post.id === parseInt(params.postId))
     console.log(post)
 
-
-    const [ voteCount, setVoteCount ] = useState(post.upvotes-post.downvotes)
-    const [ downVoteClicked, setDownVoteClicked ] = useState(false)
-    const [ upVoteClicked, setUpVoteClicked ] = useState(false)
     const [ showCommentForm, setShowCommentForm] = useState(false)
 
    
@@ -34,85 +31,32 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
         history.push(`/posts/${post.id}`)
     }
 
-    function handleDownVote(){
-        if (downVoteClicked === false){
-             fetch(`http://localhost:3001/posts/${post.id}`, {
-                 method: "PATCH",
-                 headers: {'Content-Type': 'application/json'},
-                 body: JSON.stringify({
-                     downvotes: post.downvotes +1
-                 })
-             })
-             .then(res => res.json())
-             .then(data => setVoteCount(data.upvotes - data.downvotes))
-        }else{
-            fetch(`http://localhost:3001/posts/${post.id}`, {
-                 method: "PATCH",
-                 headers: {'Content-Type': 'application/json'},
-                 body: JSON.stringify({
-                     downvotes: post.downvotes
-                 })
-             })
-             .then(res => res.json())
-             .then(data => setVoteCount(data.upvotes - data.downvotes))
-        }
-        setDownVoteClicked(downVoteClicked => !downVoteClicked)
-        setUpVoteClicked(false)
-    }
-
-    function handleUpVote(){
-        if (upVoteClicked === false){
-            fetch(`http://localhost:3001/posts/${post.id}`, {
-                method: "PATCH",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    upvotes: post.upvotes + 1
-                })
-            })
-            .then(res => res.json())
-            .then(data => setVoteCount(data.upvotes - data.downvotes))
-       }else{
-            fetch(`http://localhost:3001/posts/${post.id}`, {
-            method: "PATCH",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                upvotes: post.upvotes
-            })
-        })
-        .then(res => res.json())
-        .then(data => setVoteCount(data.upvotes - data.downvotes))
-       }
-        setUpVoteClicked(upVoteClicked => !upVoteClicked)  
-        setDownVoteClicked(false)  
-    }
 
     function handleDelete(){
         handlePostDelete(post.id)
     }
 
     return (
-        <div>
+        <div className='card'>
+            <UpAndDownVote post={post}/>
             <h3>{post.title}</h3>
             <img src={post.image} alt="Some Image"/>
-            <p>{post.text}</p>
-            {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
-            <ul>
-                {post.comments ? post.comments.length : 0} {post.comments.length === 1 ? "Comment" : "Comments"}
-                {comments}
-            </ul>
-            <Button icon name="upVote" onClick={handleUpVote}>
-                <Icon name='angle up' />
-            </Button>
-            <span>{voteCount}</span>
-            <Button icon name="downVote" onClick={handleDownVote}>
-                <Icon name='angle down' />
-            </Button>
-            <Button icon name="comment" onClick={toggleCommentForm}>
-                <Icon name='comment' />
-            </Button>
-            <Button icon name="delete" onClick={handleDelete}>
-                <Icon name='trash' />
-            </Button>
+            <div className='commentSection'>
+                <p>{post.text}</p>
+                {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
+                <ul>
+                    {post.comments ? post.comments.length : 0} {post.comments.length === 1 ? "Comment" : "Comments"}
+                    {comments}
+                </ul>
+                <span>
+                    <Button icon name="comment" onClick={toggleCommentForm}>
+                        <Icon name='comment' />
+                    </Button>
+                    <Button icon name="delete" onClick={handleDelete}>
+                        <Icon name='trash' />
+                    </Button>
+                </span>
+            </div>
         </div>
     )
 }
