@@ -1,13 +1,15 @@
-import {useState, useEffect} from 'react'
-import {Input} from "semantic-ui-react"
+import {useState} from 'react'
+import {Input, TextArea} from "semantic-ui-react"
 import { Button } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom'
 
-function CreatePostForm(){
+function CreatePostForm({posts, setPosts}){
     const [formData, setFormData] = useState({
         title: '',
         image: '',
         text: ''
     })
+    const history = useHistory()
 
     function handleFormChange(e){
         setFormData({
@@ -19,43 +21,53 @@ function CreatePostForm(){
     function handleFormSubmit(e){
         e.preventDefault()
         console.log(formData)
+        const postData = {
+            ...formData,
+            upvotes: 0,
+            downvotes: 0,
+            userId: 1
+        }
         fetch('http://localhost:3001/posts', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(formData)
+            body: JSON.stringify(postData)
         }).then(r=>r.json())
-        .then(console.log)
+        .then(data=>{
+            setPosts([data, ...posts])
+            history.push('/')
+        })
     }
+
 
     return (
         <form onSubmit={handleFormSubmit}>
             <div>
-                <input 
+                <Input 
                 type='text' 
                 placeholder='title' 
                 name='title'
                 value={formData.title}
                 onChange={handleFormChange}
                 >   
-                </input>
+                </Input>
             </div>
             <div>
-                <input 
+                <Input 
                     type='text' 
                     placeholder='image url'
                     name='image'
                     value={formData.image}
                     onChange={handleFormChange} 
-                    ></input>
+                    ></Input>
             </div>
             <div>
-                <textarea 
+                <TextArea 
                     type='text' 
                     placeholder='Text (optional)'
                     name='text'
                     value={formData.text}
                     onChange={handleFormChange} 
-                    ></textarea>
+                    ></TextArea>
             </div>
             <div>
                 <Button type='submit' color='red'>Post</Button>
