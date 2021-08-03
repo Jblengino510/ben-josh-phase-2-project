@@ -60,7 +60,7 @@ function PostDetails({ post, handlePostDelete }){
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>
             <ul>
-                <li>{post.comments.length} comments</li>
+                <li>{post.comments ? post.comments.length : 0} comments</li>
             </ul>
             <Button icon name="upVote" onClick={handleUpVote}>
                 <Icon name='angle up' />
