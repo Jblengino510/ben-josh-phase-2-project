@@ -1,16 +1,24 @@
 import CommentForm from "./CommentForm"
 import { useState } from "react"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { Button, Icon } from 'semantic-ui-react'
 
-function PostDetails({ post, allPosts, setPosts, handlePostDelete }){
+function PostDetails({ allPosts, setPosts, handlePostDelete }){
     //fetch the comments for the post
     //https://react.semantic-ui.com/views/card/#types-card-props
+    const params = useParams()
+    console.log(params)
+
+    const [post] = allPosts.filter(post=> post.id === parseInt(params.postId))
+    console.log(post)
+
+
     const [ voteCount, setVoteCount ] = useState(post.upvotes-post.downvotes)
     const [ downVoteClicked, setDownVoteClicked ] = useState(false)
     const [ upVoteClicked, setUpVoteClicked ] = useState(false)
     const [ showCommentForm, setShowCommentForm] = useState(false)
 
+   
     const history = useHistory()
 
     let comments = []

@@ -1,6 +1,7 @@
 import Home from "./Home"
 import NavBar from "./NavBar";
 import CreatePostForm from "./CreatePostForm";
+import PostDetails from "./PostDetails";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
@@ -43,10 +44,14 @@ function App() {
           <CreatePostForm setPosts={setPosts} posts={posts}/>
         </Route>
 
+        <Route exact path={'/posts/:postId'}>
+           <PostDetails allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete}/>
+        </Route> 
+
         <Route path="/">
           <Home posts={searchedPosts} setPosts={setPosts} handlePostDelete={handlePostDelete} />
         </Route>
-        
+         
       </Switch>
       
     </div>
