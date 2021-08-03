@@ -5,7 +5,7 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
     return (
         <>
             <Link to={`/posts/${post.id}`}>
-               <div>
+               <div className='card'>
                    <h3>{post.title}</h3>
                    <img src={post.image} />
                    <p>{post.text}</p>

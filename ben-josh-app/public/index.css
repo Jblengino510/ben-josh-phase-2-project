@@ -6,3 +6,17 @@
     padding: 10px;
 }
 
+.card {
+    border: 1px solid;
+    border-color: darkgrey;
+    padding: 10px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 500px
+}
