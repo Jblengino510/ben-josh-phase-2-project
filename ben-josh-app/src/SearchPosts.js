@@ -1,9 +1,12 @@
 import { Input } from "semantic-ui-react"
 
-function SearchPosts(){
+function SearchPosts({ search, setSearch }){
+    function handleSearch(e){
+        setSearch(e.target.value)
+    }
     return (
         <div>
-            <Input placeholder='Search...' />
+            <Input onChange ={handleSearch} value={search} placeholder='Search...' />
             {/* <input 
             type="text"
             id="search"
