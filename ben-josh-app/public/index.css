@@ -113,3 +113,13 @@ img {
     border-radius: 0px;
 }
 
+.profilePage {
+    height: 100vh;
+}
+
+.profileInfo {
+    float: right;
+    margin: 100px 100px;
+    height: 100vh;
+}
+
