@@ -36,12 +36,13 @@ function UpAndDownVote({ post }){
         setUpVoteClicked(false)
     }
 
-    // if(!voteCount){
-    //     if(voteCount === 0){}else{
-    //     setVoteCount(parseInt(post.upvotes)-parseInt(post.downvotes))
-    //     console.log(voteCount)
-    //     }
-    // }
+    if(!voteCount){
+        if(voteCount === 0){
+        }else if(post.upvotes){
+        setVoteCount(parseInt(post.upvotes)-parseInt(post.downvotes))
+        console.log(voteCount)
+        }
+    }
     
     
     function handleUpVote(){

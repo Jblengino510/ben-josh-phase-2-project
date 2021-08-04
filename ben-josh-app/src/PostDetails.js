@@ -20,7 +20,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
     useEffect(() => {
         fetch(`http://localhost:3001/posts/${params.postId}?_embed=comments`)
         .then(r => r.json())
-        .then(data => setPost(data))
+        .then(data => setPost({...data}))
     }, [])
 
     if(post.comments){
