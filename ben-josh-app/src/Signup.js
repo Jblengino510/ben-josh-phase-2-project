@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 
 function Signup({setLoggedInUser}){
     const [formData, setFormData] = useState({
-                                            username: "",
+                                            email: "",
                                             password: ""
                                              })
     const history = useHistory()                                        
@@ -21,9 +21,10 @@ function Signup({setLoggedInUser}){
             headers: {"Content-Type": "application/json" },
             body: JSON.stringify(formData)
         }
-        fetch(`http://localhost:3001/users`, init)  //?q=${formData.username}
+        fetch(`http://localhost:3000/signup`, init)  //?q=${formData.username}
         .then(r=>r.json())
         .then(data=>{
+            console.log(data)
             setLoggedInUser(data)
             history.push("/profile")
             }
@@ -35,9 +36,9 @@ function Signup({setLoggedInUser}){
             <Form onSubmit={handleSignupSubmit}>
                 <Form.Input
                 type='text' 
-                placeholder='username' 
-                name='username'
-                value={formData.username}
+                placeholder='Email' 
+                name='email'
+                value={formData.email}
                 onChange={handleFormChange}
                 >
                 </Form.Input>

@@ -14,18 +14,17 @@ function Login({setLoggedInUser}){
     }
 
     function handleLoginSubmit(e){
-        //fetch from the users where username === username GET /posts?q=internet
-        fetch(`http://localhost:3001/users`)  //?q=${formData.username}
+        const init = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formData)
+        }
+        fetch(`http://localhost:3000/signin`, init)  
         .then(r=>r.json())
         .then(data=>{
-            const targetUser = data.filter(user => user.username === formData.username)
-            if(targetUser.length > 0 && targetUser[0].password === formData.password){
-                setLoggedInUser(targetUser[0])
-                console.log('happened')
-            }
-        }) //then check if data[0].password === formData.password
-
-        //console.log(formData)
+                setLoggedInUser(data)
+                console.log(data)
+        }) 
     }
 
     return (
@@ -38,9 +37,9 @@ function Login({setLoggedInUser}){
                         <Form onSubmit={handleLoginSubmit}>
                             <Form.Input
                             type='text' 
-                            placeholder='username' 
-                            name='username'
-                            value={formData.username}
+                            placeholder='email' 
+                            name='email'
+                            value={formData.email}
                             onChange={handleFormChange}
                             >
                             </Form.Input>

@@ -15,7 +15,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
     let comments = []
 
     useEffect(() => {
-        fetch(`http://localhost:3001/posts/${params.postId}?_embed=comments`)
+        fetch(`http://localhost:3000/posts/${params.postId}?_embed=comments`)
         .then(r => r.json())
         .then(data => setPost({...data}))
     }, [])

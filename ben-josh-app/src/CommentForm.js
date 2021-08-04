@@ -20,7 +20,7 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
     function handleCommentSubmit(e){
         e.preventDefault()
         toggleCommentForm()
-        fetch('http://localhost:3001/comments', {
+        fetch('http://localhost:3000/comments', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(commentData)

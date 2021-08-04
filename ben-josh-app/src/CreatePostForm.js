@@ -27,7 +27,7 @@ function CreatePostForm({posts, setPosts}){
             downvotes: 0,
             userId: 1
         }
-        fetch('http://localhost:3001/posts', {
+        fetch('http://localhost:3000/posts', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(postData)

@@ -21,14 +21,14 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState(null)
 
     useEffect(()=>{
-        fetch('http://localhost:3001/posts?_embed=comments')
+        fetch('http://localhost:3000/posts?_embed=comments')
         .then(r => r.json())
         .then(data => setPosts(data))
     }, [])
     
 
   function handlePostDelete(id){
-      fetch(`http://localhost:3001/posts/${id}`, {
+      fetch(`http://localhost:3000/posts/${id}`, {
         method: 'DELETE'
       })
       setPosts(posts.filter(post => post.id !== id))

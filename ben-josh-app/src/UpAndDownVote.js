@@ -9,7 +9,7 @@ function UpAndDownVote({ post }){
     
     function handleDownVote(){
         if (downVoteClicked === false){
-             fetch(`http://localhost:3001/posts/${post.id}`, {
+             fetch(`http://localhost:3000/posts/${post.id}`, {
                  method: "PATCH",
                  headers: {'Content-Type': 'application/json'},
                  body: JSON.stringify({
@@ -20,7 +20,7 @@ function UpAndDownVote({ post }){
              .then(res => res.json())
              .then(data => setVoteCount(data.upvotes - data.downvotes))
         } else{ 
-            fetch(`http://localhost:3001/posts/${post.id}`, {
+            fetch(`http://localhost:3000/posts/${post.id}`, {
                  method: "PATCH",
                  headers: {'Content-Type': 'application/json'},
                  body: JSON.stringify({
@@ -44,7 +44,7 @@ function UpAndDownVote({ post }){
     
     function handleUpVote(){
         if (upVoteClicked === false){
-            fetch(`http://localhost:3001/posts/${post.id}`, {
+            fetch(`http://localhost:3000/posts/${post.id}`, {
                 method: "PATCH",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -55,7 +55,7 @@ function UpAndDownVote({ post }){
             .then(res => res.json())
             .then(data => setVoteCount(data.upvotes - data.downvotes))
        } else{
-            fetch(`http://localhost:3001/posts/${post.id}`, {
+            fetch(`http://localhost:3000/posts/${post.id}`, {
             method: "PATCH",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
