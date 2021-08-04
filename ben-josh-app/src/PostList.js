@@ -7,7 +7,9 @@ function PostList({ posts, setPosts, handlePostDelete }){
 
     return (
         <>
+            <div className="postWrapper">
             {renderedPosts}
+            </div>
         </>
     )
 }

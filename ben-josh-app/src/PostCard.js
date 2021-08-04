@@ -8,7 +8,7 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
     const myLabel = { as: 'a', basic: true, pointing: 'left', content: post.comments.length }
 
     return (
-        <>
+        <div className="cardWrapper">
         <Link to={`/posts/${post.id}`}>
             <div className='card'>
                 <Grid >
@@ -42,7 +42,7 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
                 </Grid>
             </div>
         </Link>
-        </> 
+        </div> 
     )
 }
 

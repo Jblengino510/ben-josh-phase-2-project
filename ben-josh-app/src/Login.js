@@ -1,4 +1,4 @@
-import {Form, Input, Button} from "semantic-ui-react"
+import {Form, Segment, Grid, Divider, Button} from "semantic-ui-react"
 import { useState } from "react"
 import {Link} from 'react-router-dom'
 
@@ -29,28 +29,41 @@ function Login({setLoggedInUser}){
     }
 
     return (
+        
+        
         <div className = "loginForm">
-            <Form onSubmit={handleLoginSubmit}>
-                <Form.Input
-                type='text' 
-                placeholder='username' 
-                name='username'
-                value={formData.username}
-                onChange={handleFormChange}
-                >
-                </Form.Input>
+             <Segment placeholder>
+                <Grid columns={2} relaxed='very' stackable>
+                    <Grid.Column>
+                        <Form onSubmit={handleLoginSubmit}>
+                            <Form.Input
+                            type='text' 
+                            placeholder='username' 
+                            name='username'
+                            value={formData.username}
+                            onChange={handleFormChange}
+                            >
+                            </Form.Input>
+                        
+                            <Form.Input
+                            type='password' 
+                            placeholder='password' 
+                            name='password'
+                            value={formData.password}
+                            onChange={handleFormChange}
+                            >
+                            </Form.Input>
+                            <Button type='submit' color='red'>Login</Button>
+                        </Form>
+                        </Grid.Column>
+                        <Grid.Column verticalAlign='middle'>
+                        <Link to="/signup"><Button content='Sign up' icon='signup' size='big' /></Link>
+                    </Grid.Column>
+                    </Grid>
+
+                    <Divider vertical>Or</Divider>
+                </Segment>
             
-                <Form.Input
-                type='password' 
-                placeholder='password' 
-                name='password'
-                value={formData.password}
-                onChange={handleFormChange}
-                >
-                </Form.Input>
-                <Button type='submit' color='red'>Login</Button>
-            </Form>
-            <Link to="/signup">go to Signup</Link>
         </div>
     )
 
