@@ -5,9 +5,9 @@ function NavBar({ search, setSearch }){
     return (
         <>
         <div className='navBar'>
-            <Link to="/"><h1>Creddit</h1></Link>
+            <Link to="/" className="navBarLink"><h1>Creddit</h1></Link>
             <SearchPosts search={search} setSearch={setSearch}/>
-            <h3>Login/Signup</h3>
+            <Link to="signup" className="navBarLink" ><h3>Login/Signup</h3></Link>
         </div>
         </>
     )

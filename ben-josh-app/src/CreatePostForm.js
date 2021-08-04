@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {Input, TextArea} from "semantic-ui-react"
+import {Input, TextArea, Form} from "semantic-ui-react"
 import { Button } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
 
@@ -40,7 +40,8 @@ function CreatePostForm({posts, setPosts}){
 
 
     return (
-        <form onSubmit={handleFormSubmit}>
+        <div className = "postForm">
+        <Form onSubmit={handleFormSubmit}>
             <div>
                 <Input 
                 type='text' 
@@ -48,6 +49,7 @@ function CreatePostForm({posts, setPosts}){
                 name='title'
                 value={formData.title}
                 onChange={handleFormChange}
+                style={{width: 400}}
                 >   
                 </Input>
             </div>
@@ -57,7 +59,8 @@ function CreatePostForm({posts, setPosts}){
                     placeholder='image url'
                     name='image'
                     value={formData.image}
-                    onChange={handleFormChange} 
+                    onChange={handleFormChange}
+                    style={{width: 400}} 
                     ></Input>
             </div>
             <div>
@@ -66,13 +69,15 @@ function CreatePostForm({posts, setPosts}){
                     placeholder='Text (optional)'
                     name='text'
                     value={formData.text}
-                    onChange={handleFormChange} 
+                    onChange={handleFormChange}
+                    style={{width: 400}} 
                     ></TextArea>
             </div>
             <div>
                 <Button type='submit' color='red'>Post</Button>
             </div>
-        </form>
+        </Form>
+        </div>
     )
 }
 
