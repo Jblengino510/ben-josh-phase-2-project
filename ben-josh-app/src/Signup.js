@@ -1,36 +1,38 @@
 import {Form, Input, Button} from "semantic-ui-react"
 import { useState } from "react"
-import {Link} from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 
-function Login({setLoggedInUser}){
+function Signup({setLoggedInUser}){
     const [formData, setFormData] = useState({
                                             username: "",
                                             password: ""
                                              })
+    const history = useHistory()                                        
+
     function handleFormChange(e){
         setFormData({...formData, 
         [e.target.name]: e.target.value
         })
     }
 
-    function handleLoginSubmit(e){
-        //fetch from the users where username === username GET /posts?q=internet
-        fetch(`http://localhost:3001/users`)  //?q=${formData.username}
+    function handleSignupSubmit(e){
+        const init = {
+            method: "POST",
+            headers: {"Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        }
+        fetch(`http://localhost:3001/users`, init)  //?q=${formData.username}
         .then(r=>r.json())
         .then(data=>{
-            const targetUser = data.filter(user => user.username === formData.username)
-            if(targetUser.length > 0 && targetUser[0].password === formData.password){
-                setLoggedInUser(targetUser[0])
-                console.log('happened')
+            setLoggedInUser(data)
+            history.push("/profile")
             }
-        }) //then check if data[0].password === formData.password
-
-        //console.log(formData)
+        ) 
     }
 
     return (
         <div className = "loginForm">
-            <Form onSubmit={handleLoginSubmit}>
+            <Form onSubmit={handleSignupSubmit}>
                 <Form.Input
                 type='text' 
                 placeholder='username' 
@@ -48,12 +50,11 @@ function Login({setLoggedInUser}){
                 onChange={handleFormChange}
                 >
                 </Form.Input>
-                <Button type='submit' color='red'>Login</Button>
+                <Button type='submit' color='red'>Signup</Button>
             </Form>
-            <Link to="/signup">go to Signup</Link>
         </div>
     )
 
 }
 
-export default Login
+export default Signup

@@ -6,6 +6,8 @@ import Login from "./Login";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
+import Signup from "./Signup";
+import Profile from "./Profile";
 
 //benjamin's thoughts on the user object
 /*
@@ -48,6 +50,14 @@ function App() {
 
         <Route path="/login">
           <Login setLoggedInUser={setLoggedInUser}></Login>
+        </Route>
+
+        <Route path="/signup">
+          <Signup setLoggedInUser={setLoggedInUser}></Signup>
+        </Route>
+
+        <Route path="/profile">
+          <Profile setLoggedInUser={setLoggedInUser}/>
         </Route>
 
         <Route exact path={"/posts/:postId"}>
