@@ -74,7 +74,7 @@ function UpAndDownVote({ post }){
             <Button icon name="upVote" onClick={handleUpVote}>
                 <Icon name='angle up' />
             </Button>
-            <span>{voteCount ? voteCount : null}</span>
+            <span>{voteCount || voteCount === 0  ? voteCount : null}</span>
             <Button icon name="downVote" onClick={handleDownVote}>
                 <Icon name='angle down' />
             </Button>
