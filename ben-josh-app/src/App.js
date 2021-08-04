@@ -13,13 +13,13 @@ useState // or useContext
 */ 
 
 function App() {
-  const [search, setSearch ]= useState("")
-  const [posts, setPosts] = useState([])
+  const [ search, setSearch ]= useState("")
+  const [ posts, setPosts ] = useState([])
 
     useEffect(()=>{
         fetch('http://localhost:3001/posts?_embed=comments')
-        .then(r=> r.json())
-        .then(data=>setPosts(data))
+        .then(r => r.json())
+        .then(data => setPosts(data))
     }, [])
     
 
@@ -27,7 +27,7 @@ function App() {
       fetch(`http://localhost:3001/posts/${id}`, {
         method: 'DELETE'
       })
-      setPosts(posts.filter(post=> post.id!==id))
+      setPosts(posts.filter(post => post.id !== id))
   } 
 
   const searchedPosts = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
@@ -44,7 +44,7 @@ function App() {
           <CreatePostForm setPosts={setPosts} posts={posts}/>
         </Route>
 
-        <Route exact path={'/posts/:postId'}>
+        <Route exact path={"/posts/:postId"}>
            <PostDetails allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete}/>
         </Route> 
 

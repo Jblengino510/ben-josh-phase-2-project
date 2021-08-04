@@ -10,15 +10,16 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
     const params = useParams()
     console.log(params)
 
-    const [post, setPost] = useState({})
-    const [ showCommentForm, setShowCommentForm] = useState(false)
+    const [ post, setPost ] = useState({})
+    console.log(post)
+    const [ showCommentForm, setShowCommentForm ] = useState(false)
 
     const history = useHistory()
     let comments = []
 
     useEffect(() => {
         fetch(`http://localhost:3001/posts/${params.postId}?_embed=comments`)
-        .then(r=> r.json())
+        .then(r => r.json())
         .then(data => setPost(data))
     }, [])
 
