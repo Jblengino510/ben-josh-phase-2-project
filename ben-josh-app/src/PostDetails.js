@@ -2,7 +2,7 @@ import UpAndDownVote from "./UpAndDownVote"
 import CommentForm from "./CommentForm"
 import { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { Button, Grid, Icon } from 'semantic-ui-react'
+import { Button, Grid, Icon, Comment, Header } from 'semantic-ui-react'
 
 function PostDetails({ allPosts, setPosts, handlePostDelete }){
     //fetch the comments for the post
@@ -22,7 +22,20 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
 
     if(post.comments){
         comments = post.comments.map(comment => (
-            <li key={comment.id}>{comment.comment}</li>
+            <Comment>
+                <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
+                <Comment.Content>
+                    <Comment.Text key={comment.id}>
+                        {comment.comment}
+                        <Comment.Metadata>
+                            <span>{new Date().toLocaleString()}</span>
+                        </Comment.Metadata>
+                        <Comment.Actions>
+                            <a onClick={toggleCommentForm}>Reply</a>
+                        </Comment.Actions>
+                    </Comment.Text>
+                </Comment.Content>
+            </Comment>
         ))
     }
 
@@ -44,27 +57,29 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
             <UpAndDownVote post={post}/>
             </Grid.Column>
             <Grid.Column width={14}>
-            <h3>{post.title}</h3>
+            <h2>{post.title}</h2>
             <img src={post.image} alt="Some Image"/>
+            <p>{post.text}</p>
+            {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
             <div className='commentSection'>
-                <p>{post.text}</p>
-                {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
-                <ul>
+                
+                <Comment.Group threaded>
+                    <Header as='h3' dividing>
                     {post.comments ? post.comments.length  + ( post.comments.length === 1 ? " Comment" : " Comments"): 0 + " Comments"} 
-    
-                    <div>
-                        {comments}
-                    </div>
-                </ul>
-                <span>
-                    <Button icon name="comment" onClick={toggleCommentForm}>
-                        <Icon name='comment' />
-                    </Button>
-                    <Button icon name="delete" onClick={handleDelete}>
-                        <Icon name='trash' />
-                    </Button>
-                </span>
+                    </Header>
+                    {comments} 
+                </Comment.Group>
             </div>
+            <span>
+                <Button icon labelPosition='left' onClick={toggleCommentForm}>
+                    <Icon name='comment' />
+                    Reply
+                </Button>
+                    
+                <Button icon name="delete" onClick={handleDelete}>
+                    <Icon name='trash' />
+                </Button>
+            </span>
             </Grid.Column>
             </Grid.Row>
             </Grid>
