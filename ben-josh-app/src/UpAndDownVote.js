@@ -36,7 +36,7 @@ function UpAndDownVote({ post }){
 
     if(!voteCount){
         if(voteCount === 0){
-        }else if(post.upvotes){
+        }else if(post.upvotes || post.upvotes === 0){
             setVoteCount(post.upvotes-post.downvotes)
         }
     }
