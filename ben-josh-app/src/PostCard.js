@@ -1,6 +1,6 @@
 import UpAndDownVote from "./UpAndDownVote"
-import { Link, Route } from "react-router-dom"
-import { Button, Grid, Icon } from 'semantic-ui-react'
+import { Link } from "react-router-dom"
+import { Button, Grid } from 'semantic-ui-react'
 
 function PostCard({post, allPosts, setPosts, handlePostDelete}){
     console.log(post)
@@ -17,10 +17,10 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
                         <UpAndDownVote post={post}/>
                     </Grid.Column>
                     <Grid.Column width ={14}>
-                        <Link to={`/posts/${post.id}`} className="postLink">
+                        {/* <Link to={`/posts/${post.id}`} className="postLink"> */}
                             <div>
                                 <h2>{post.title}</h2>
-                                <img src={post.image} />
+                                <img src={post.image} alt={post.title}/>
                                 <p>{post.text}</p>
                                 <div>
                                     {/* <Button icon name="comment">
@@ -34,7 +34,7 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
                                     />
                                 </div>
                             </div> 
-                        </Link>
+                        {/* </Link> */}
                     </Grid.Column>
                     </Grid.Row>
                 </Grid>

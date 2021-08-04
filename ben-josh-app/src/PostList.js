@@ -1,5 +1,4 @@
 import PostCard from "./PostCard"
-import { useState, useEffect } from "react"
 
 function PostList({ posts, setPosts, handlePostDelete }){
     
