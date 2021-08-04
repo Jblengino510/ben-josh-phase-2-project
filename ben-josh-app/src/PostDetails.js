@@ -25,11 +25,12 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
             <Comment>
                 <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
                 <Comment.Content>
-                    <Comment.Text key={comment.id}>
-                        {comment.comment}
-                        <Comment.Metadata>
+                    <Comment.Author as='a'>User</Comment.Author>
+                    <Comment.Metadata>
                             <span>{new Date().toLocaleString()}</span>
                         </Comment.Metadata>
+                    <Comment.Text key={comment.id}>
+                        {comment.comment}
                         <Comment.Actions>
                             <a onClick={toggleCommentForm}>Reply</a>
                         </Comment.Actions>
@@ -65,7 +66,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
                 
                 <Comment.Group threaded>
                     <Header as='h3' dividing>
-                    {post.comments ? post.comments.length  + ( post.comments.length === 1 ? " Comment" : " Comments"): 0 + " Comments"} 
+                    {post.comments ? post.comments.length  + ( post.comments.length === 1 ? " Comment" : " Comments") : 0 + " Comments"} 
                     </Header>
                     {comments} 
                 </Comment.Group>

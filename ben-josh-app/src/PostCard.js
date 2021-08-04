@@ -14,7 +14,9 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
                 <Grid >
                     <Grid.Row>
                     <Grid.Column width ={1}>
-                        <UpAndDownVote post={post}/>
+                        <Link to="/" className="postLink">
+                            <UpAndDownVote post={post}/>
+                        </Link>
                     </Grid.Column>
                     <Grid.Column width ={14}>
                         <Link to={`/posts/${post.id}`} className="postLink">
