@@ -4,6 +4,9 @@ import { Button, Grid, Icon } from 'semantic-ui-react'
 
 function PostCard({post, allPosts, setPosts, handlePostDelete}){
     console.log(post)
+
+    const myLabel = { as: 'a', basic: true, pointing: 'left', content: post.comments.length }
+
     return (
         <>
         <div className='card'>
@@ -13,15 +16,21 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
                     <UpAndDownVote post={post}/>
                 </Grid.Column>
                 <Grid.Column width ={14}>
-                    <Link to={`/posts/${post.id}`}>
+                    <Link to={`/posts/${post.id}`} className="postLink">
                         <div>
                             <h2>{post.title}</h2>
                              <img src={post.image} />
                             <p>{post.text}</p>
                             <div>
-                                <Button icon name="comment">
+                                {/* <Button icon name="comment">
                                     <Icon name='comment' />
-                                </Button>
+                                </Button> */}
+                                <Button
+                                    content='Comments'
+                                    icon='comment'
+                                    label={myLabel}
+                                    labelPosition='right'
+                                    />
                             </div>
                          </div> 
                     </Link>

@@ -8,12 +8,9 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
     //fetch the comments for the post
     //https://react.semantic-ui.com/views/card/#types-card-props
     const params = useParams()
-    console.log(params)
-
+    
     const [ post, setPost ] = useState({})
-    console.log(post)
     const [ showCommentForm, setShowCommentForm ] = useState(false)
-
     const history = useHistory()
     let comments = []
 
