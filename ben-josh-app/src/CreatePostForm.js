@@ -43,7 +43,7 @@ function CreatePostForm({posts, setPosts}){
         <div className = "postForm">
         <Form onSubmit={handleFormSubmit}>
             <div>
-                <Input 
+                <Form.Input 
                 type='text' 
                 placeholder='title' 
                 name='title'
@@ -51,17 +51,17 @@ function CreatePostForm({posts, setPosts}){
                 onChange={handleFormChange}
                 style={{width: 400}}
                 >   
-                </Input>
+                </Form.Input>
             </div>
             <div>
-                <Input 
+                <Form.Input 
                     type='text' 
                     placeholder='image url'
                     name='image'
                     value={formData.image}
                     onChange={handleFormChange}
                     style={{width: 400}} 
-                    ></Input>
+                    ></Form.Input>
             </div>
             <div>
                 <TextArea 

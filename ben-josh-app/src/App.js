@@ -2,6 +2,7 @@ import Home from "./Home"
 import NavBar from "./NavBar";
 import CreatePostForm from "./CreatePostForm";
 import PostDetails from "./PostDetails";
+import Login from "./Login";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
@@ -15,6 +16,7 @@ useState // or useContext
 function App() {
   const [ search, setSearch ]= useState("")
   const [ posts, setPosts ] = useState([])
+  const [loggedInUser, setLoggedInUser] = useState(null)
 
     useEffect(()=>{
         fetch('http://localhost:3001/posts?_embed=comments')
@@ -36,12 +38,16 @@ function App() {
   return (
     <div className="app">
       
-      <NavBar search={search} setSearch={setSearch}/>
+      <NavBar search={search} setSearch={setSearch} loggedInUser={loggedInUser}/>
       
       <Switch>
 
         <Route path="/posts/new">
           <CreatePostForm setPosts={setPosts} posts={posts}/>
+        </Route>
+
+        <Route path="/login">
+          <Login setLoggedInUser={setLoggedInUser}></Login>
         </Route>
 
         <Route exact path={"/posts/:postId"}>

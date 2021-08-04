@@ -47,9 +47,17 @@
 
 .postForm{
     margin: 0 auto;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
-    
+    width: 50%;
+    height: 100vh;
+}
+
+.loginForm {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
     width: 50%;
     height: 100vh;
 }
