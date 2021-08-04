@@ -13,7 +13,9 @@ function CreatePost(){
 
 
     return (
-        <Button color='red' onClick={togglePostForm}>Create Post</Button>
+        <div className="createPost">
+            <Button color='red' onClick={togglePostForm}>Create Post</Button>
+        </div>
     )
 }
 

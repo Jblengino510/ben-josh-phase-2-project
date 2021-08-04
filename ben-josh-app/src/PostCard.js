@@ -1,29 +1,33 @@
 import UpAndDownVote from "./UpAndDownVote"
 import { Link, Route } from "react-router-dom"
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Grid, Icon } from 'semantic-ui-react'
 
 function PostCard({post, allPosts, setPosts, handlePostDelete}){
     return (
         <>
         <div className='card'>
-            <UpAndDownVote post={post}/>
-            <Link to={`/posts/${post.id}`}>
-               <div>
-                   <h3>{post.title}</h3>
-                   <img src={post.image} />
-                   <p>{post.text}</p>
-                   <div>
-                    <Button icon name="comment">
-                        <Icon name='comment' />
-                    </Button>
-                   </div>
-               </div> 
-            </Link>
+            <Grid >
+                <Grid.Row>
+                <Grid.Column width ={1}>
+                    <UpAndDownVote post={post}/>
+                </Grid.Column>
+                <Grid.Column width ={14}>
+                    <Link to={`/posts/${post.id}`}>
+                        <div>
+                            <h2>{post.title}</h2>
+                             <img src={post.image} />
+                            <p>{post.text}</p>
+                            <div>
+                                <Button icon name="comment">
+                                    <Icon name='comment' />
+                                </Button>
+                            </div>
+                         </div> 
+                    </Link>
+                </Grid.Column>
+                </Grid.Row>
+            </Grid>
         </div>
-            
-            {/* <Route exact path={'/posts/:postId'}>
-                <PostDetails post={post} allPosts={allPosts} setPosts={setPosts} handlePostDelete={handlePostDelete}/>
-            </Route>     */}
         </> 
     )
 }

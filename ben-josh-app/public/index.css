@@ -1,4 +1,13 @@
+* {
+ list-style-type: none;
+}
+
+#root {
+  background-color: rgb(58, 58, 58);
+}
+
 .navBar {
+    background-color: darkred;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -8,7 +17,11 @@
 
 .card {
     border: 1px solid;
-    border-color: darkgrey;
+    border-radius: 10px;
+    border-color: #444;
+    margin: 10px;
+    background-color: dimgrey;
+    color: black;
     margin: 0 auto;
     padding: 10px;
     width: 700px;
@@ -16,24 +29,37 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 5px 5px 5px rgb(27, 27, 27);
 }
 
 .commentSection {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    margin-right: 320px;
+    /* margin-right: 320px; */
     
 }
+
+.createPost {
+    
+    margin: 20px;
+}
+
+p { 
+    font-size: 18px;
+}
+
+a { color: black;}
 
 .voteButtons {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 600px;
+    /* margin-right: 600px; */
 }
 
 img {
-    width: 500px
+    width: 500px;
+    border-radius: 0px;
 }
 

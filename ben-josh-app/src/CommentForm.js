@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, TextArea } from "semantic-ui-react"
+import { Button, Form, TextArea } from "semantic-ui-react"
 
 function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
     const [ commentData, setCommentData ] = useState({
@@ -46,7 +46,7 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
 
     return (
         <div>
-            <form onSubmit={handleCommentSubmit}>
+            <Form onSubmit={handleCommentSubmit}>
                 <div>
                     <TextArea 
                     type="text" 
@@ -57,9 +57,9 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
                     ></TextArea>
                 </div>
                 <div>
-                    <Button type='submit' color='white'>Post</Button>
+                    <Button type='submit' color='red'>Post</Button>
                 </div>
-            </form>
+            </Form>
         </div>
     )
 }

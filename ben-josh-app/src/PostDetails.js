@@ -2,7 +2,7 @@ import UpAndDownVote from "./UpAndDownVote"
 import CommentForm from "./CommentForm"
 import { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Grid, Icon } from 'semantic-ui-react'
 
 function PostDetails({ allPosts, setPosts, handlePostDelete }){
     //fetch the comments for the post
@@ -40,7 +40,12 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
 
     return (
         <div className='card'>
+            <Grid>
+            <Grid.Row>
+            <Grid.Column width = {1}>
             <UpAndDownVote post={post}/>
+            </Grid.Column>
+            <Grid.Column width={14}>
             <h3>{post.title}</h3>
             <img src={post.image} alt="Some Image"/>
             <div className='commentSection'>
@@ -48,7 +53,10 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
                 {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
                 <ul>
                     {post.comments ? post.comments.length  + ( post.comments.length === 1 ? " Comment" : " Comments"): 0 + " Comments"} 
-                    {comments}
+    
+                    <div>
+                        {comments}
+                    </div>
                 </ul>
                 <span>
                     <Button icon name="comment" onClick={toggleCommentForm}>
@@ -59,6 +67,9 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
                     </Button>
                 </span>
             </div>
+            </Grid.Column>
+            </Grid.Row>
+            </Grid>
         </div>
     )
 }

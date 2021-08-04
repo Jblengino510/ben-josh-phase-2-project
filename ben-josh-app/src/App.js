@@ -34,7 +34,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className="app">
       
       <NavBar search={search} setSearch={setSearch}/>
       
