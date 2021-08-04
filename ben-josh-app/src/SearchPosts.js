@@ -6,7 +6,7 @@ function SearchPosts({ search, setSearch }){
     }
     return (
         <div>
-            <Input onChange ={handleSearch} value={search} placeholder='Search...' />
+            <Input icon='search' onChange ={handleSearch} value={search} placeholder='Search...' />
             {/* <input 
             type="text"
             id="search"

@@ -3,6 +3,7 @@ import { Link, Route } from "react-router-dom"
 import { Button, Grid, Icon } from 'semantic-ui-react'
 
 function PostCard({post, allPosts, setPosts, handlePostDelete}){
+    console.log(post)
     return (
         <>
         <div className='card'>

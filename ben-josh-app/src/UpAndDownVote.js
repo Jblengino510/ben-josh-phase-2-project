@@ -7,6 +7,7 @@ function UpAndDownVote({ post }){
     const [ voteCount, setVoteCount ] = useState(initVotes)
     const [ downVoteClicked, setDownVoteClicked ] = useState(false)
     const [ upVoteClicked, setUpVoteClicked ] = useState(false)
+
     
     function handleDownVote(){
         if (downVoteClicked === false){
@@ -14,13 +15,13 @@ function UpAndDownVote({ post }){
                  method: "PATCH",
                  headers: {'Content-Type': 'application/json'},
                  body: JSON.stringify({
-                     downvotes: post.downvotes +1,
+                     downvotes: post.downvotes + 1,
                      upvotes: post.upvotes
                  })
              })
              .then(res => res.json())
              .then(data => setVoteCount(data.upvotes - data.downvotes))
-        }else{
+        } else{ 
             fetch(`http://localhost:3001/posts/${post.id}`, {
                  method: "PATCH",
                  headers: {'Content-Type': 'application/json'},
@@ -55,7 +56,7 @@ function UpAndDownVote({ post }){
             })
             .then(res => res.json())
             .then(data => setVoteCount(data.upvotes - data.downvotes))
-       }else{
+       } else{
             fetch(`http://localhost:3001/posts/${post.id}`, {
             method: "PATCH",
             headers: {'Content-Type': 'application/json'},
@@ -75,7 +76,7 @@ function UpAndDownVote({ post }){
             <Button icon name="upVote" onClick={handleUpVote}>
                 <Icon name='angle up' />
             </Button>
-            <span>{post.upvotes ? post.upvotes - post.downvotes : null}</span>
+            <span>{voteCount ? voteCount : null}</span>
             <Button icon name="downVote" onClick={handleDownVote}>
                 <Icon name='angle down' />
             </Button>
