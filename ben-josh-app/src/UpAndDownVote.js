@@ -2,9 +2,7 @@ import { useState } from "react"
 import { Button, Icon } from 'semantic-ui-react'
 
 function UpAndDownVote({ post }){
-    console.log("post: ", post)
-    const initVotes = post.upvotes - post.downvotes
-    const [ voteCount, setVoteCount ] = useState(initVotes)
+    const [ voteCount, setVoteCount ] = useState(post.upvotes - post.downvotes)
     const [ downVoteClicked, setDownVoteClicked ] = useState(false)
     const [ upVoteClicked, setUpVoteClicked ] = useState(false)
 
@@ -39,8 +37,7 @@ function UpAndDownVote({ post }){
     if(!voteCount){
         if(voteCount === 0){
         }else if(post.upvotes){
-        setVoteCount(parseInt(post.upvotes)-parseInt(post.downvotes))
-        console.log(voteCount)
+            setVoteCount(post.upvotes-post.downvotes)
         }
     }
     
