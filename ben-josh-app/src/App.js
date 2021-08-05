@@ -69,7 +69,7 @@ function App() {
         </Route>
 
         <Route path="/profile">
-          <Profile allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} setLoggedInUser={setLoggedInUser} loggedInUser={loggedInUser}/>
+          <Profile allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} setLoggedInUser={setLoggedInUser} loggedInUser={loggedInUser} darkMode={darkMode}/>
         </Route>
 
         <Route exact path={"/posts/:postId"}>
@@ -77,7 +77,7 @@ function App() {
         </Route> 
 
         <Route path="/">
-          <Home posts={searchedPosts} setPosts={setPosts} handlePostDelete={handlePostDelete} loggedInUser={loggedInUser}/>
+          <Home posts={searchedPosts} setPosts={setPosts} handlePostDelete={handlePostDelete} loggedInUser={loggedInUser} darkMode={darkMode}/>
         </Route>
          
       </Switch>

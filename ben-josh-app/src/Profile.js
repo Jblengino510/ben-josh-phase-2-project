@@ -5,7 +5,7 @@ import PostList from "./PostList";
 import CreatePost from "./CreatePost";
 
 
-function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, loggedInUser }){
+function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, loggedInUser, darkMode }){
     const history = useHistory()
 
     function handleLogoutClick(){
@@ -30,7 +30,7 @@ function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, logged
                 <Grid.Row>
                     <Grid.Column width={8}>
                     <h1>My Posts</h1> 
-                    <PostList setPosts={setPosts} handlePostDelete={handlePostDelete} posts={profilePosts}/>   
+                    <PostList setPosts={setPosts} handlePostDelete={handlePostDelete} posts={profilePosts} darkMode={darkMode}/>   
                     </Grid.Column>
                     <Grid.Column width={8}>
                     <aside className='profileInfo'>

@@ -40,12 +40,29 @@
     width: 600px;
 }
 
+.darkModeCard {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: #444;
+    margin: 10px;
+    background-color: dimgrey;
+    color: black;
+    margin: 20px  50px auto;
+    padding: 10px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px rgb(27, 27, 27);
+}
+
+
 .card {
     border: 1px solid;
     border-radius: 10px;
     border-color: #444;
     margin: 10px;
-    /* background-color: dimgrey; */
     background-color: rgb(221, 221, 221);
     color: black;
     margin: 20px  50px auto;
@@ -131,21 +148,21 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .homePage {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 
 }
 
 .profileInfo {
     float: right;
     margin: 50px 20px 50px 200px;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .app {

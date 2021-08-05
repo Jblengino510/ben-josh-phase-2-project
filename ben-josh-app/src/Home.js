@@ -2,14 +2,14 @@ import CreatePost from "./CreatePost";
 import PostList from "./PostList";
 import { Card, Icon, Grid, GridColumn } from "semantic-ui-react"
 
-function Home({ posts, setPosts, handlePostDelete, loggedInUser }){
+function Home({ posts, setPosts, handlePostDelete, loggedInUser, darkMode }){
     return (
         <>
             <div className='homePage'>
                 {loggedInUser ? <CreatePost /> : null}
                 <Grid>
                     <GridColumn width={9}>
-                        <PostList posts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete}/>
+                        <PostList posts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} darkMode={darkMode}/>
                     </GridColumn>
                     <GridColumn width={7}>
                         <aside className='profileInfo'>
