@@ -41,7 +41,6 @@ function CreatePostForm({posts, setPosts, loggedInUser}){
         }
     }
 
-
     return (
         <div className = "postForm">
         <Form onSubmit={handleFormSubmit}>

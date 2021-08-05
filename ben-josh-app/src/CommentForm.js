@@ -43,7 +43,6 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm, loggedInUser
           })
     }
 
-
     return (
         <div>
             <Form onSubmit={handleCommentSubmit}>
