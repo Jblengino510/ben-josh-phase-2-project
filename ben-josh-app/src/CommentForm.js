@@ -39,8 +39,8 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
             "comment": "",
             "postId": post.id,
             "userId": 1,
-            "upvotes": 200,
-            "downvotes": 10
+            "upvotes": 0,
+            "downvotes": 0
           })
     }
 

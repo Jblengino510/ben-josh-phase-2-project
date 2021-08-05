@@ -69,7 +69,7 @@ function App() {
         </Route> 
 
         <Route path="/">
-          <Home posts={searchedPosts} setPosts={setPosts} handlePostDelete={handlePostDelete} />
+          <Home posts={searchedPosts} setPosts={setPosts} handlePostDelete={handlePostDelete} loggedInUser={loggedInUser}/>
         </Route>
          
       </Switch>

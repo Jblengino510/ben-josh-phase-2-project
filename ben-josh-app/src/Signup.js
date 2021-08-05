@@ -5,7 +5,8 @@ import { useHistory } from "react-router-dom"
 function Signup({setLoggedInUser}){
     const [formData, setFormData] = useState({
                                             email: "",
-                                            password: ""
+                                            password: "",
+                                            about: ""
                                              })
     const history = useHistory()                                        
 
@@ -48,6 +49,14 @@ function Signup({setLoggedInUser}){
                 placeholder='password' 
                 name='password'
                 value={formData.password}
+                onChange={handleFormChange}
+                >
+                </Form.Input>
+                <Form.Input
+                type='text' 
+                placeholder='About you' 
+                name='about'
+                value={formData.about}
                 onChange={handleFormChange}
                 >
                 </Form.Input>

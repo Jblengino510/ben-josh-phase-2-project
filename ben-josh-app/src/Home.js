@@ -1,10 +1,10 @@
 import CreatePost from "./CreatePost";
 import PostList from "./PostList";
 
-function Home({ posts, setPosts, handlePostDelete }){
+function Home({ posts, setPosts, handlePostDelete, loggedInUser }){
     return (
         <>
-            <CreatePost />
+            {loggedInUser ? <CreatePost /> : null}
             <PostList posts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete}/>
         </>
     )

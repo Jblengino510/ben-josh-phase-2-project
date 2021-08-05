@@ -12,14 +12,18 @@ function Profile({setLoggedInUser, loggedInUser}){
         history.push("/")
     }
 
+    if(!loggedInUser){
+        history.push("/")
+    }
+
     return (
         <div className='profilePage'>  
             <aside className='profileInfo'>
                 <Card 
                     image='https://react.semantic-ui.com/images/avatar/small/matt.jpg'
-                    header='Elliot Baker'
+                    header={loggedInUser.user.email}
                     meta='Friend'
-                    description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'  
+                    description={loggedInUser.user.about ? loggedInUser.user.about : `We don't know anything about ${loggedInUser.user.email}`} 
                 />
                 <CreatePost />
                 <Card>

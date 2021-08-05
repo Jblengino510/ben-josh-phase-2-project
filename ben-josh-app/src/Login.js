@@ -1,18 +1,19 @@
 import {Form, Segment, Grid, Divider, Button} from "semantic-ui-react"
 import { useState } from "react"
-import {Link} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 function Login({setLoggedInUser}){
     const [formData, setFormData] = useState({
                                             email: "",
                                             password: ""
                                              })
+    const history = useHistory() 
+                                             
     function handleFormChange(e){
         setFormData({...formData, 
         [e.target.name]: e.target.value
         })
     }
-
     function handleLoginSubmit(e){
         const init = {
             method: "POST",
@@ -22,7 +23,10 @@ function Login({setLoggedInUser}){
         fetch(`http://localhost:3000/signin`, init)  
         .then(r=>r.json())
         .then(data=>{
-                setLoggedInUser(data)
+                if(data.accessToken){
+                    setLoggedInUser(data)
+                    history.push('/profile')
+                }
         }) 
     }
 
