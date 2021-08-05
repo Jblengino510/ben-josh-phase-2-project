@@ -19,6 +19,7 @@ function App() {
   const [ search, setSearch ]= useState("")
   const [ posts, setPosts ] = useState([])
   const [loggedInUser, setLoggedInUser] = useState(null)
+  const [darkMode, setDarkMode] = useState(false)
 
     useEffect(()=>{
         fetch('http://localhost:3000/posts?_embed=comments')
@@ -38,9 +39,9 @@ function App() {
 
 
   return (
-    <div className="app">
+    <div className={darkMode ? "darkModeApp" : "app"}>
       
-      <NavBar search={search} setSearch={setSearch} loggedInUser={loggedInUser}/>
+      <NavBar search={search} setSearch={setSearch} loggedInUser={loggedInUser} darkMode={darkMode} setDarkMode={setDarkMode}/>
       
       <Switch>
 
