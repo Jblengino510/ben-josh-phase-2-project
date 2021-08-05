@@ -5,10 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { Button, Grid, Icon, Comment, Header } from 'semantic-ui-react'
 
 function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
-    //fetch the comments for the post
-    //https://react.semantic-ui.com/views/card/#types-card-props
     const params = useParams()
-    
     const [ post, setPost ] = useState({})
     const [ fetchedComments, setFetchedComments] = useState([])
     const [ showCommentForm, setShowCommentForm ] = useState(false)
@@ -56,12 +53,9 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
         history.push(`/posts/${post.id}`)
     }
 
-
     function handleDelete(){
         handlePostDelete(post.id)
     }
-
-    // console.log(post.user)
 
     return (
         <div className='card' style={{margin: "0 auto"}}>
