@@ -45,9 +45,10 @@
     border-radius: 10px;
     border-color: #444;
     margin: 10px;
-    background-color: dimgrey;
+    /* background-color: dimgrey; */
+    background-color: rgb(221, 221, 221);
     color: black;
-    margin: 20px auto;
+    margin: 20px  50px auto;
     padding: 10px;
     width: 600px;
     display: flex;
@@ -133,9 +134,17 @@ img {
     height: 100vh;
 }
 
+.homePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+}
+
 .profileInfo {
     float: right;
-    margin: 100px 100px;
+    margin: 50px 20px 50px 200px;
     height: 100vh;
 }
 

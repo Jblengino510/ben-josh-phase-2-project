@@ -11,21 +11,18 @@ function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, logged
     function handleLogoutClick(){
         setLoggedInUser(null)
         history.push("/")
+        localStorage.clear()
     }
 
     if(!loggedInUser){
         history.push("/")
     }
-    console.log(allPosts)
-    console.log(loggedInUser)
+  
 
     const profilePosts = allPosts.filter(post => (
         post.userId === loggedInUser.user.id 
     ))
 
-    // const renderedProfilePosts = profilePosts.map(post => (
-    //     console.log(post)
-    // ))
 
     return (
         <div className='profilePage'>  
@@ -37,7 +34,7 @@ function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, logged
                     </Grid.Column>
                     <Grid.Column width={8}>
                     <aside className='profileInfo'>
-                        <Button onClick={handleLogoutClick} >Logout</Button>
+                        <Button onClick={handleLogoutClick}>Logout</Button>
                         <Card 
                             image='https://react.semantic-ui.com/images/avatar/small/matt.jpg'
                             header={loggedInUser.user.email}

@@ -25,13 +25,13 @@ function Login({setLoggedInUser}){
         .then(data=>{
                 if(data.accessToken){
                     setLoggedInUser(data)
+                    localStorage.setItem('user', JSON.stringify(data))
                     history.push('/profile')
                 }
         }) 
     }
 
     return (
-        
         
         <div className = "loginForm">
              <Segment placeholder>
@@ -65,7 +65,6 @@ function Login({setLoggedInUser}){
 
                     <Divider vertical>Or</Divider>
                 </Segment>
-            
         </div>
     )
 

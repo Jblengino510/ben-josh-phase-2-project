@@ -22,12 +22,20 @@ function App() {
 
   const history = useHistory()
   const [darkMode, setDarkMode] = useState(false)
+  const myStorage = window.localStorage;
+  console.log(myStorage)
 
     useEffect(()=>{
+      const localUser = localStorage.getItem("user");
+        if (localUser) {
+        const foundUser = JSON.parse(localUser);
+        console.log(JSON.parse(localUser))
+        setLoggedInUser(foundUser)}
         fetch('http://localhost:3000/posts?_embed=comments&_expand=user')
         .then(r => r.json())
         .then(data => setPosts(data))
     }, [])
+
     
 
   function handlePostDelete(id){
