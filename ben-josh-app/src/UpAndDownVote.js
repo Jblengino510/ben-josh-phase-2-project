@@ -5,7 +5,6 @@ function UpAndDownVote({ post }){
     const [ voteCount, setVoteCount ] = useState(post.upvotes - post.downvotes)
     const [ downVoteClicked, setDownVoteClicked ] = useState(false)
     const [ upVoteClicked, setUpVoteClicked ] = useState(false)
-
     
     function handleDownVote(){
         if (downVoteClicked === false){
@@ -40,7 +39,6 @@ function UpAndDownVote({ post }){
             setVoteCount(post.upvotes-post.downvotes)
         }
     }
-    
     
     function handleUpVote(){
         if (upVoteClicked === false){

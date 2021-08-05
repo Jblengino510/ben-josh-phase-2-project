@@ -18,11 +18,9 @@ function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, logged
         history.push("/")
     }
   
-
     const profilePosts = allPosts.filter(post => (
         post.userId === loggedInUser.user.id 
     ))
-
 
     return (
         <div className='profilePage'>  
