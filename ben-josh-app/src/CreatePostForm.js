@@ -3,7 +3,7 @@ import {Input, TextArea, Form} from "semantic-ui-react"
 import { Button } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
 
-function CreatePostForm({posts, setPosts}){
+function CreatePostForm({posts, setPosts, loggedInUser}){
     const [formData, setFormData] = useState({
         title: '',
         image: '',
@@ -20,22 +20,24 @@ function CreatePostForm({posts, setPosts}){
 
     function handleFormSubmit(e){
         e.preventDefault()
-        console.log(formData)
-        const postData = {
-            ...formData,
-            upvotes: 0,
-            downvotes: 0,
-            userId: 1
+        
+        if(loggedInUser){
+            const postData = {
+                ...formData,
+                upvotes: 0,
+                downvotes: 0,
+                userId: loggedInUser.user.id
+            }
+            fetch('http://localhost:3000/posts', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(postData)
+            }).then(r=>r.json())
+            .then(data=>{
+                setPosts([data, ...posts])
+                history.push('/')
+            })
         }
-        fetch('http://localhost:3000/posts', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(postData)
-        }).then(r=>r.json())
-        .then(data=>{
-            setPosts([data, ...posts])
-            history.push('/')
-        })
     }
 
 

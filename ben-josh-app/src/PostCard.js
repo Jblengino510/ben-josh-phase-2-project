@@ -5,7 +5,7 @@ import { Button, Grid } from 'semantic-ui-react'
 function PostCard({post, allPosts, setPosts, handlePostDelete}){
     console.log(post)
 
-    const myLabel = { as: 'a', basic: true, pointing: 'left', content: post.comments.length }
+    const myLabel = { as: 'a', basic: true, pointing: 'left', content: post.comments ? post.comments.length : 0 }
 
     return (
         <div className="cardWrapper">

@@ -4,7 +4,7 @@ import CreatePostForm from "./CreatePostForm";
 import PostDetails from "./PostDetails";
 import Login from "./Login";
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
 import Signup from "./Signup";
 import Profile from "./Profile";
@@ -19,7 +19,7 @@ function App() {
   const [ search, setSearch ]= useState("")
   const [ posts, setPosts ] = useState([])
   const [loggedInUser, setLoggedInUser] = useState(null)
-
+  const history = useHistory()
     useEffect(()=>{
         fetch('http://localhost:3000/posts?_embed=comments')
         .then(r => r.json())
@@ -32,6 +32,7 @@ function App() {
         method: 'DELETE'
       })
       setPosts(posts.filter(post => post.id !== id))
+      history.push("/")
   } 
 
   const searchedPosts = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
@@ -45,7 +46,7 @@ function App() {
       <Switch>
 
         <Route path="/posts/new">
-          <CreatePostForm setPosts={setPosts} posts={posts}/>
+          <CreatePostForm setPosts={setPosts} posts={posts} loggedInUser={loggedInUser}/>
         </Route>
 
         <Route path="/login">
@@ -57,7 +58,7 @@ function App() {
         </Route>
 
         <Route path="/profile">
-          <Profile setLoggedInUser={setLoggedInUser}/>
+          <Profile setLoggedInUser={setLoggedInUser} loggedInUser={loggedInUser}/>
         </Route>
 
         <Route exact path={"/posts/:postId"}>

@@ -4,7 +4,7 @@ import { Card, Icon } from 'semantic-ui-react'
 import CreatePost from "./CreatePost";
 
 
-function Profile({setLoggedInUser}){
+function Profile({setLoggedInUser, loggedInUser}){
     const history = useHistory()
 
     function handleLogoutClick(){

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 function Login({setLoggedInUser}){
     const [formData, setFormData] = useState({
-                                            username: "",
+                                            email: "",
                                             password: ""
                                              })
     function handleFormChange(e){
@@ -23,7 +23,6 @@ function Login({setLoggedInUser}){
         .then(r=>r.json())
         .then(data=>{
                 setLoggedInUser(data)
-                console.log(data)
         }) 
     }
 
