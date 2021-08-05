@@ -65,7 +65,7 @@ function App() {
         </Route>
 
         <Route exact path={"/posts/:postId"}>
-           <PostDetails allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete}/>
+           <PostDetails allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} loggedInUser={loggedInUser}/>
         </Route> 
 
         <Route path="/">

@@ -4,30 +4,44 @@ import { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { Button, Grid, Icon, Comment, Header } from 'semantic-ui-react'
 
-function PostDetails({ allPosts, setPosts, handlePostDelete }){
+function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
     //fetch the comments for the post
     //https://react.semantic-ui.com/views/card/#types-card-props
     const params = useParams()
     
     const [ post, setPost ] = useState({})
+    const [ fetchedComments, setFetchedComments] = useState([])
     const [ showCommentForm, setShowCommentForm ] = useState(false)
     const history = useHistory()
     let comments = []
 
     useEffect(() => {
-        fetch(`http://localhost:3000/posts/${params.postId}?_embed=comments`)
+        fetch(`http://localhost:3000/posts/${params.postId}?_embed=comments&_expand=user`)
         .then(r => r.json())
-        .then(data => setPost({...data}))
+        .then(data => {setPost({...data})
+                    console.log("post: ", data)
+        })
     }, [])
 
-    if(post.comments){
-        comments = post.comments.map(comment => (
-            <Comment>
+    useEffect(() =>{
+        fetch(`http://localhost:3000/comments/?_expand=user`)
+        .then(r => r.json())
+        .then(data => {setFetchedComments([...data])
+                    console.log("comments: ", data)
+        })
+    }, [allPosts])
+
+    comments = fetchedComments.filter(c=>c.postId === post.id)
+    console.log('filtered comments', comments)
+
+    if(comments){
+        comments = comments.map(comment => (
+            <Comment key={comment.id}>
                 <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
                 <Comment.Content>
-                    <Comment.Author as='a'>User</Comment.Author>
+                    <Comment.Author >{comment.user.email}</Comment.Author>
                     <Comment.Metadata>
-                            <span>{new Date().toLocaleString()}</span>
+                            <span>{comment.dateCreated || null}</span>
                         </Comment.Metadata>
                     <Comment.Text key={comment.id}>
                         {comment.comment}
@@ -76,10 +90,10 @@ function PostDetails({ allPosts, setPosts, handlePostDelete }){
                     <Icon name='comment' />
                     Reply
                 </Button>
-                    
+                {loggedInUser && loggedInUser.user.id === post.userId ? (    
                 <Button icon name="delete" onClick={handleDelete}>
                     <Icon name='trash' />
-                </Button>
+                </Button> ) : ( null )}
             </span>
             </Grid.Column>
             </Grid.Row>

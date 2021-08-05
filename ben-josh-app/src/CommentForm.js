@@ -23,7 +23,8 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
         fetch('http://localhost:3000/comments', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(commentData)
+            body: JSON.stringify({...commentData,
+                                  dateCreated: new Date().toLocaleString()})
         }).then(r=>r.json())
         .then(data=>{
             console.log(data)
