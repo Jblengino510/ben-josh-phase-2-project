@@ -4,6 +4,7 @@ import { Button, Grid } from 'semantic-ui-react'
 
 function PostCard({post, allPosts, setPosts, handlePostDelete}){
     const myLabel = { as: 'a', basic: true, pointing: 'left', content: post.comments ? post.comments.length : 0 }
+    // console.log(post)
     return (
         <div className="cardWrapper">
         <Link to={`/posts/${post.id}`}>
@@ -18,6 +19,7 @@ function PostCard({post, allPosts, setPosts, handlePostDelete}){
                     <Grid.Column width ={14}>
                         {/* <Link to={`/posts/${post.id}`} className="postLink"> */}
                             <div>
+                                <h3>{post.user.email}</h3>
                                 <h2>{post.title}</h2>
                                 <img src={post.image} alt={post.title}/>
                                 <p>{post.text}</p>

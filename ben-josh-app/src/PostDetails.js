@@ -61,6 +61,8 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
         handlePostDelete(post.id)
     }
 
+    // console.log(post.user)
+
     return (
         <div className='card'>
             <Grid>
@@ -69,6 +71,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
             <UpAndDownVote post={post}/>
             </Grid.Column>
             <Grid.Column width={14}>
+            <h3>{post.user ? post.user.email : post.email}</h3>
             <h2>{post.title}</h2>
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>

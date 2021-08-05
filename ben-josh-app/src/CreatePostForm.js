@@ -26,7 +26,8 @@ function CreatePostForm({posts, setPosts, loggedInUser}){
                 ...formData,
                 upvotes: 0,
                 downvotes: 0,
-                userId: loggedInUser.user.id
+                userId: loggedInUser.user.id,
+                email: loggedInUser.user.email
             }
             fetch('http://localhost:3000/posts', {
                 method: 'POST',

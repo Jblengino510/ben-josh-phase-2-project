@@ -24,7 +24,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false)
 
     useEffect(()=>{
-        fetch('http://localhost:3000/posts?_embed=comments')
+        fetch('http://localhost:3000/posts?_embed=comments&_expand=user')
         .then(r => r.json())
         .then(data => setPosts(data))
     }, [])
@@ -61,7 +61,7 @@ function App() {
         </Route>
 
         <Route path="/profile">
-          <Profile setLoggedInUser={setLoggedInUser} loggedInUser={loggedInUser}/>
+          <Profile allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} setLoggedInUser={setLoggedInUser} loggedInUser={loggedInUser}/>
         </Route>
 
         <Route exact path={"/posts/:postId"}>

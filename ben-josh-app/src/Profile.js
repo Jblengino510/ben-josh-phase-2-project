@@ -1,10 +1,11 @@
 import { Button } from "semantic-ui-react";
 import {useHistory} from "react-router-dom"
 import { Card, Icon } from 'semantic-ui-react'
+import PostList from "./PostList";
 import CreatePost from "./CreatePost";
 
 
-function Profile({setLoggedInUser, loggedInUser}){
+function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, loggedInUser }){
     const history = useHistory()
 
     function handleLogoutClick(){
@@ -15,10 +16,21 @@ function Profile({setLoggedInUser, loggedInUser}){
     if(!loggedInUser){
         history.push("/")
     }
+    console.log(allPosts)
+    console.log(loggedInUser)
+
+    const profilePosts = allPosts.filter(post => (
+        post.userId === loggedInUser.user.id 
+    ))
+
+    // const renderedProfilePosts = profilePosts.map(post => (
+    //     console.log(post)
+    // ))
 
     return (
         <div className='profilePage'>  
             <h1>My Posts</h1> 
+            <PostList setPosts={setPosts} handlePostDelete={handlePostDelete} posts={profilePosts}/>   
             
             <aside className='profileInfo'>
                 <Button onClick={handleLogoutClick} >Logout</Button>
