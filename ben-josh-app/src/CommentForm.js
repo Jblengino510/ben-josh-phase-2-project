@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { Button, Form, TextArea } from "semantic-ui-react"
 
-function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
+function CommentForm({ post, allPosts, setPosts, toggleCommentForm, loggedInUser }){
     const [ commentData, setCommentData ] = useState({
         "comment": "",
         "postId": post.id,
-        "userId": 1,
-        "upvotes": 200,
-        "downvotes": 10
+        "userId": loggedInUser ? loggedInUser.user.id : 1,
+        "upvotes": 0,
+        "downvotes": 0
       })
 
     function handleCommentChange(e){
@@ -37,7 +37,7 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
         setCommentData({
             "comment": "",
             "postId": post.id,
-            "userId": 1,
+            "userId": loggedInUser ? loggedInUser.user.id : 1,
             "upvotes": 0,
             "downvotes": 0
           })

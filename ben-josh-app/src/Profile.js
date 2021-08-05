@@ -18,7 +18,10 @@ function Profile({setLoggedInUser, loggedInUser}){
 
     return (
         <div className='profilePage'>  
+            <h1>My Posts</h1> 
+            
             <aside className='profileInfo'>
+                <Button onClick={handleLogoutClick} >Logout</Button>
                 <Card 
                     image='https://react.semantic-ui.com/images/avatar/small/matt.jpg'
                     header={loggedInUser.user.email}
@@ -36,7 +39,7 @@ function Profile({setLoggedInUser, loggedInUser}){
                     </Card.Content>
                 </Card>
             </aside>
-            <Button onClick={handleLogoutClick}>Logout</Button>
+            
         </div>
     )
 }

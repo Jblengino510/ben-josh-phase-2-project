@@ -72,7 +72,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
             <h2>{post.title}</h2>
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>
-            {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm}/>}
+            {!showCommentForm ? null : <CommentForm post={post} allPosts={allPosts} setPosts={setPosts} toggleCommentForm={toggleCommentForm} loggedInUser={loggedInUser}/>}
             <div className='commentSection'>
                 
                 <Comment.Group threaded>
