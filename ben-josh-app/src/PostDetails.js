@@ -58,7 +58,8 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
     }
 
     return (
-        <div className='card' style={{margin: "0 auto"}}>
+        <div className='card' style={{margin: "0 auto",
+                                      "margin-top": "20px"}}>
             <Grid>
             <Grid.Row>
             <Grid.Column width = {1}>
