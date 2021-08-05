@@ -27,7 +27,6 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm }){
                                   dateCreated: new Date().toLocaleString()})
         }).then(r=>r.json())
         .then(data=>{
-            console.log(data)
             if(post.comments){
                 post.comments = [...post.comments, data]
             } else {

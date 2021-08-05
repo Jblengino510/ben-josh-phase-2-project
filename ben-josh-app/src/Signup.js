@@ -25,7 +25,6 @@ function Signup({setLoggedInUser}){
         fetch(`http://localhost:3000/signup`, init)  //?q=${formData.username}
         .then(r=>r.json())
         .then(data=>{
-            console.log(data)
             setLoggedInUser(data)
             history.push("/profile")
             }

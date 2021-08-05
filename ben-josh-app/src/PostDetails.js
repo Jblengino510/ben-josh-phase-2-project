@@ -19,7 +19,6 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
         fetch(`http://localhost:3000/posts/${params.postId}?_embed=comments&_expand=user`)
         .then(r => r.json())
         .then(data => {setPost({...data})
-                    console.log("post: ", data)
         })
     }, [])
 
@@ -27,12 +26,10 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
         fetch(`http://localhost:3000/comments/?_expand=user`)
         .then(r => r.json())
         .then(data => {setFetchedComments([...data])
-                    console.log("comments: ", data)
         })
     }, [allPosts])
 
     comments = fetchedComments.filter(c=>c.postId === post.id)
-    console.log('filtered comments', comments)
 
     if(comments){
         comments = comments.map(comment => (

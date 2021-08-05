@@ -3,10 +3,7 @@ import { Link } from "react-router-dom"
 import { Button, Grid } from 'semantic-ui-react'
 
 function PostCard({post, allPosts, setPosts, handlePostDelete}){
-    console.log(post)
-
     const myLabel = { as: 'a', basic: true, pointing: 'left', content: post.comments ? post.comments.length : 0 }
-
     return (
         <div className="cardWrapper">
         <Link to={`/posts/${post.id}`}>
