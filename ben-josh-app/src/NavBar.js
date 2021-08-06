@@ -1,6 +1,6 @@
 import SearchPosts from "./SearchPosts"
 import { Link } from "react-router-dom"
-import { Segment, Sticky, Checkbox, Icon } from "semantic-ui-react"
+import { Segment, Sticky, Checkbox } from "semantic-ui-react"
 
 
 function NavBar({ search, setSearch, loggedInUser, darkMode, setDarkMode }){
@@ -47,7 +47,7 @@ function NavBar({ search, setSearch, loggedInUser, darkMode, setDarkMode }){
                     {loggedInUser 
                     ? <Link to="/profile" className="navBarLink" ><h3 style={darkMode 
                     ? {color: 'white'} 
-                    : {color: 'black'}}>Profile</h3></Link> 
+                    : {color: 'black'}}>Profile</h3></Link>
                     : <Link to="/login" className="navBarLink" >
                         <h3 style={darkMode ? {color: 'white'} : {color: 'black'}}>Login</h3>
                     </Link>}               
