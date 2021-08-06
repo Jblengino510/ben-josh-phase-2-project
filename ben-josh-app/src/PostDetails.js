@@ -2,13 +2,16 @@ import UpAndDownVote from "./UpAndDownVote"
 import CommentForm from "./CommentForm"
 import { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { Button, Grid, Icon, Comment, Header } from 'semantic-ui-react'
+import { Button, Grid, Icon, Comment, Header, Modal } from 'semantic-ui-react'
+import CreatePostForm from "./CreatePostForm"
 
 function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser, darkMode }){
     const params = useParams()
     const [ post, setPost ] = useState({})
     const [ fetchedComments, setFetchedComments] = useState([])
     const [ showCommentForm, setShowCommentForm ] = useState(false)
+    const [open, setOpen] = useState(false)
+    const [edit, setEdit] = useState(false)
     const history = useHistory()
     let comments = []
 
@@ -17,7 +20,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser, darkM
         .then(r => r.json())
         .then(data => {setPost({...data})
         })
-    }, [])
+    }, [edit])
 
     useEffect(() =>{
         fetch(`http://localhost:3000/comments/?_expand=user`)
@@ -90,9 +93,33 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser, darkM
                     Reply
                 </Button>
                 {loggedInUser && loggedInUser.user.id === post.userId ? (    
+                <>
                 <Button icon name="delete" onClick={handleDelete}>
                     <Icon name='trash' />
-                </Button> ) : ( null )}
+                </Button> 
+                 <Modal
+                    basic
+                    onClose={() => setOpen(false)}
+                    onOpen={() => setOpen(true)}
+                    open={open}
+                    size='small'
+                    trigger={<Button>Edit Post</Button>}
+                    >
+                    <Header icon>
+                        <Icon name='archive' />
+                        Edit Post
+                    </Header>
+                    <Modal.Content>
+                        <CreatePostForm setPosts={setPosts} posts={allPosts} loggedInUser={loggedInUser} createPost={false} editPostData={post} setOpen={setOpen} edit={edit} setEdit={setEdit}/>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button color='green' inverted onClick={() => setOpen(false)}>
+                        <Icon name='checkmark' /> Submit Edit
+                        </Button>
+                    </Modal.Actions>
+                    </Modal>
+                </>
+                ) : ( null )}
             </span>
             </Grid.Column>
             </Grid.Row>

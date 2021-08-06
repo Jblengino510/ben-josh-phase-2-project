@@ -42,7 +42,7 @@ function App() {
       <NavBar search={search} setSearch={setSearch} loggedInUser={loggedInUser} darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Switch>
         <Route path="/posts/new">
-          <CreatePostForm setPosts={setPosts} posts={posts} loggedInUser={loggedInUser}/>
+          <CreatePostForm setPosts={setPosts} posts={posts} loggedInUser={loggedInUser} createPost={true}/>
         </Route>
         <Route path="/login">
           <Login setLoggedInUser={setLoggedInUser}></Login>
