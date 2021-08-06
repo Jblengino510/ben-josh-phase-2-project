@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button, Icon } from 'semantic-ui-react'
 
-function UpAndDownVote({ post }){
+function UpAndDownVote({ post, darkMode }){
     const [ voteCount, setVoteCount ] = useState(post.upvotes - post.downvotes)
     const [ downVoteClicked, setDownVoteClicked ] = useState(false)
     const [ upVoteClicked, setUpVoteClicked ] = useState(false)
@@ -50,7 +50,10 @@ function UpAndDownVote({ post }){
 
     return (
         <div className='voteButtons'>
-            <Button 
+           {darkMode 
+           ? <>
+           <Button
+            basic inverted color='green'
             icon 
             name="upVote" 
             style={upVoteClicked ? { color: 'green' } : { color: 'grey' }} 
@@ -58,8 +61,28 @@ function UpAndDownVote({ post }){
             >
                 <Icon name='arrow up' />
             </Button>
-            <span 
-            style={voteCount > 0 ? { color: 'green' } : voteCount < 0 ? { color: 'red' } : { color: 'black' }}>
+            <span style={voteCount > 0 ? { color: 'green' } : voteCount < 0 ? { color: 'red' } : { color: 'black' }}>
+                {voteCount || voteCount === 0  ? voteCount : null}
+            </span>
+            <Button 
+            basic inverted color='red'
+            icon 
+            name="downVote" 
+            style={downVoteClicked ? { color: 'red' } : { color: 'grey' }} 
+            onClick={handleDownVote}
+            >
+                <Icon name='arrow down' /> 
+            </Button></> 
+            : <>
+            <Button
+            icon 
+            name="upVote" 
+            style={upVoteClicked ? { color: 'green' } : { color: 'grey' }} 
+            onClick={handleUpVote}
+            >
+                <Icon name='arrow up' />
+            </Button>
+            <span style={voteCount > 0 ? { color: 'green' } : voteCount < 0 ? { color: 'red' } : { color: 'black' }}>
                 {voteCount || voteCount === 0  ? voteCount : null}
             </span>
             <Button 
@@ -68,8 +91,8 @@ function UpAndDownVote({ post }){
             style={downVoteClicked ? { color: 'red' } : { color: 'grey' }} 
             onClick={handleDownVote}
             >
-                <Icon name='arrow down' />
-            </Button>
+                <Icon name='arrow down' /> 
+            </Button></>}
         </div>
     )
 }

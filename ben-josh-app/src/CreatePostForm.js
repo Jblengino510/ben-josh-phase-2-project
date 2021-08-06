@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {Input, TextArea, Form} from "semantic-ui-react"
+import { Input, TextArea, Form } from "semantic-ui-react"
 import { Button } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
 
