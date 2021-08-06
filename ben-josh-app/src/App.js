@@ -12,10 +12,10 @@ import Profile from "./Profile";
 function App() {
   const [ search, setSearch ]= useState("")
   const [ posts, setPosts ] = useState([])
-  const [loggedInUser, setLoggedInUser] = useState(null)
+  const [ loggedInUser, setLoggedInUser ] = useState(null)
   const history = useHistory()
-  const [darkMode, setDarkMode] = useState(false)
-  const myStorage = window.localStorage;
+  const [ darkMode, setDarkMode ] = useState(false)
+ 
 
     useEffect(()=>{
       const localUser = localStorage.getItem("user");
@@ -54,7 +54,7 @@ function App() {
           <Profile allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} setLoggedInUser={setLoggedInUser} loggedInUser={loggedInUser} darkMode={darkMode}/>
         </Route>
         <Route exact path={"/posts/:postId"}>
-           <PostDetails allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} loggedInUser={loggedInUser}/>
+           <PostDetails allPosts={posts} setPosts={setPosts} handlePostDelete={handlePostDelete} loggedInUser={loggedInUser} darkMode={darkMode}/>
         </Route>
         <Route path="/">
           <Home posts={searchedPosts} setPosts={setPosts} handlePostDelete={handlePostDelete} loggedInUser={loggedInUser} darkMode={darkMode}/>

@@ -4,7 +4,6 @@
 }
 
 #root {
-  /* background-color: rgb(58, 58, 58); */
   background-color: white;
 }
 
@@ -44,10 +43,9 @@
     border: 1px solid;
     border-radius: 10px;
     border-color: #444;
-    margin: 10px;
     background-color: dimgrey;
     color: black;
-    margin: 20px  50px auto;
+    margin: 20px 50px auto;
     padding: 10px;
     width: 600px;
     display: flex;
@@ -57,15 +55,19 @@
     box-shadow: 5px 5px 5px rgb(27, 27, 27);
 }
 
+.darkModeCard:hover {
+    border-color: rgb(190, 190, 190);
+    cursor: pointer;
+}
+
 
 .card {
     border: 1px solid;
     border-radius: 10px;
-    border-color: #444;
-    margin: 10px;
-    background-color: rgb(221, 221, 221);
+    border-color: rgb(190, 190, 190);
+    background-color: rgba(255,255,255, 1);
     color: black;
-    margin: 20px  50px auto;
+    margin: 20px 50px auto;
     padding: 10px;
     width: 600px;
     display: flex;
@@ -76,7 +78,7 @@
 }
 
 .card:hover {
-    border-color: rgb(190, 190, 190);
+    border-color: #444;
     cursor: pointer;
 }
 
@@ -84,6 +86,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
+    margin: 20px 0;
     /* border: 1px solid;
     border-radius: 10px;
     border-color: #444; */
@@ -136,7 +139,6 @@ p {
     flex-direction: column;
     align-items: center;
     font-weight: 900;
-    /* margin-right: 600px; */
 }
 
 img {

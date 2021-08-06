@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { Button, Grid, Icon, Comment, Header } from 'semantic-ui-react'
 
-function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
+function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser, darkMode }){
     const params = useParams()
     const [ post, setPost ] = useState({})
     const [ fetchedComments, setFetchedComments] = useState([])
@@ -26,7 +26,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
         })
     }, [allPosts])
 
-    comments = fetchedComments.filter(c=>c.postId === post.id)
+    comments = fetchedComments.filter(c => c.postId === post.id)
 
     if(comments){
         comments = comments.map(comment => (
@@ -57,16 +57,19 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
         handlePostDelete(post.id)
     }
 
+
     return (
-        <div className='card' style={{margin: "0 auto",
-                                      "margin-top": "20px"}}>
+        <div className={darkMode ? 'darkModeCard' : 'card'} style={{margin: "0 auto"}}>
             <Grid>
             <Grid.Row>
             <Grid.Column width = {1}>
             <UpAndDownVote post={post}/>
             </Grid.Column>
             <Grid.Column width={14}>
+            <span>
             <h3>{post.user ? post.user.email : post.email}</h3>
+            <p>{post.dateCreated || null}</p>
+            </span>
             <h2>{post.title}</h2>
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>
@@ -79,6 +82,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
                     </Header>
                     {comments} 
                 </Comment.Group>
+
             </div>
             <span>
                 <Button icon labelPosition='left' onClick={toggleCommentForm}>

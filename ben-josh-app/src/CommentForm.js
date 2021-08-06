@@ -25,8 +25,8 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm, loggedInUser
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({...commentData,
                                   dateCreated: new Date().toLocaleString()})
-        }).then(r=>r.json())
-        .then(data=>{
+        }).then(r => r.json())
+        .then(data => {
             if(post.comments){
                 post.comments = [...post.comments, data]
             } else {
@@ -56,7 +56,7 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm, loggedInUser
                     ></TextArea>
                 </div>
                 <div>
-                    <Button type='submit' color='red'>Post</Button>
+                    <Button fluid type='submit' color='red'>Post</Button>
                 </div>
             </Form>
         </div>

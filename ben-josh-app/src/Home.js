@@ -19,7 +19,7 @@ function Home({ posts, setPosts, handlePostDelete, loggedInUser, darkMode }){
                                 <Card.Content header='Privacy Policy' />
                                 <Card.Content description='' />
                                 <Card.Content extra>
-                                    Creddit Inc 2021. <Icon name='closed captioning outline' />All Rights Reserved
+                                    Creddit Inc 2021. <Icon name='closed captioning outline'/>All Rights Reserved
                                 </Card.Content>
                             </Card>
                         </aside>
