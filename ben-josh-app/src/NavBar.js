@@ -54,7 +54,6 @@ function NavBar({ search, setSearch, loggedInUser, darkMode, setDarkMode }){
                 </div>
                 </Segment> 
                 </Sticky>}
-            
         </>
     )
 }

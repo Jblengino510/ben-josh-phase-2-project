@@ -66,13 +66,13 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser, darkM
             <Grid>
             <Grid.Row>
             <Grid.Column width = {1}>
-            <UpAndDownVote post={post}/>
+            <UpAndDownVote post={post} darkMode={darkMode}/>
             </Grid.Column>
             <Grid.Column width={14}>
-            <span>
+            <div>
+            <em style={{float: 'right'}}>{post.dateCreated}</em>
             <h3>{post.user ? post.user.email : post.email}</h3>
-            <p>{post.dateCreated || null}</p>
-            </span>
+            </div>
             <h2>{post.title}</h2>
             <img src={post.image} alt="Some Image"/>
             <p>{post.text}</p>

@@ -13,7 +13,7 @@ function PostCard({ post, darkMode, allPosts, setPosts, handlePostDelete }){
                     <Grid.Row>
                     <Grid.Column width ={1}>
                         <Link>
-                            <UpAndDownVote post={post}/>
+                            <UpAndDownVote post={post} darkMode={darkMode}/>
                         </Link>
                     </Grid.Column>
                     <Grid.Column width ={14}>
