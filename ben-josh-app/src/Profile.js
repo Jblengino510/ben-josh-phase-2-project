@@ -1,5 +1,5 @@
 import { useHistory, Link } from "react-router-dom"
-import { Button, Grid, Card, Icon, Modal } from 'semantic-ui-react'
+import { Button, Grid, Card, Icon, Header, Segment, Modal, GridColumn } from 'semantic-ui-react'
 import PostList from "./PostList";
 import CreatePost from "./CreatePost";
 
@@ -26,7 +26,12 @@ function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, logged
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={9}>
+                    <br></br>
+                    {darkMode ? <Header inverted as='h1' attached='top'>
                     <h1 style={darkMode ? {color: 'white'} : {color: 'black'}}>My Posts</h1>
+                    </Header> : <Header as='h1' attached='top'>
+                    <h1 style={darkMode ? {color: 'white'} : {color: 'black'}}>My Posts</h1>
+                    </Header>}
                     <div className='cardWrapper'>
                     <Link to="/profile">
                     <PostList setPosts={setPosts} handlePostDelete={handlePostDelete} posts={profilePosts} darkMode={darkMode}/>
@@ -35,7 +40,7 @@ function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, logged
                     </Grid.Column>
                     <Grid.Column width={7}>
                     <aside className='profileInfo'>
-                        <Button onClick={handleLogoutClick}>Logout</Button>
+                        {darkMode ? <Button basic inverted color='grey' onClick={handleLogoutClick}>Logout</Button> : <Button onClick={handleLogoutClick}>Logout</Button>}
                         <Card 
                             image='https://react.semantic-ui.com/images/avatar/small/matt.jpg'
                             header={loggedInUser.user.email}
