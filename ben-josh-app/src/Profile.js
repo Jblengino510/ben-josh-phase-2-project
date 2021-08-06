@@ -1,6 +1,5 @@
-import { Button, Grid } from "semantic-ui-react";
-import {useHistory} from "react-router-dom"
-import { Card, Icon } from 'semantic-ui-react'
+import { useHistory, Link } from "react-router-dom"
+import { Button, Grid, Card, Icon } from 'semantic-ui-react'
 import PostList from "./PostList";
 import CreatePost from "./CreatePost";
 
@@ -26,11 +25,15 @@ function Profile({ allPosts, setPosts, handlePostDelete, setLoggedInUser, logged
         <div className='profilePage'>  
             <Grid>
                 <Grid.Row>
-                    <Grid.Column width={8}>
-                    <h1>My Posts</h1> 
-                    <PostList setPosts={setPosts} handlePostDelete={handlePostDelete} posts={profilePosts} darkMode={darkMode}/>   
+                    <Grid.Column width={9}>
+                    <h1 style={darkMode ? {color: 'white'} : {color: 'black'}}>My Posts</h1>
+                    <div className='cardWrapper'>
+                    <Link to="/profile">
+                    <PostList setPosts={setPosts} handlePostDelete={handlePostDelete} posts={profilePosts} darkMode={darkMode}/>
+                    </Link>
+                    </div>
                     </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={7}>
                     <aside className='profileInfo'>
                         <Button onClick={handleLogoutClick}>Logout</Button>
                         <Card 

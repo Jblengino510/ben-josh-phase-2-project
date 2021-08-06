@@ -2,7 +2,7 @@ import UpAndDownVote from "./UpAndDownVote"
 import { Link } from "react-router-dom"
 import { Button, Grid } from 'semantic-ui-react'
 
-function PostCard({post, darkMode, allPosts, setPosts, handlePostDelete}){
+function PostCard({ post, darkMode, allPosts, setPosts, handlePostDelete }){
     const myLabel = { as: 'a', basic: true, pointing: 'left', content: post.comments ? post.comments.length : 0 }
     // console.log(post)
     return (
@@ -12,7 +12,7 @@ function PostCard({post, darkMode, allPosts, setPosts, handlePostDelete}){
                 <Grid >
                     <Grid.Row>
                     <Grid.Column width ={1}>
-                        <Link to="/" className='postLink'>
+                        <Link>
                             <UpAndDownVote post={post}/>
                         </Link>
                     </Grid.Column>

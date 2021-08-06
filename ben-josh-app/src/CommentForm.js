@@ -56,7 +56,7 @@ function CommentForm({ post, allPosts, setPosts, toggleCommentForm, loggedInUser
                     ></TextArea>
                 </div>
                 <div>
-                    <Button type='submit' color='red'>Post</Button>
+                    <Button fluid type='submit' color='red'>Post</Button>
                 </div>
             </Form>
         </div>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { Button, Grid, Icon, Comment, Header } from 'semantic-ui-react'
 
-function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
+function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser, darkMode }){
     const params = useParams()
     const [ post, setPost ] = useState({})
     const [ fetchedComments, setFetchedComments] = useState([])
@@ -26,7 +26,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
         })
     }, [allPosts])
 
-    comments = fetchedComments.filter(c=>c.postId === post.id)
+    comments = fetchedComments.filter(c => c.postId === post.id)
 
     if(comments){
         comments = comments.map(comment => (
@@ -58,7 +58,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
     }
 
     return (
-        <div className='card' style={{margin: "0 auto"}}>
+        <div className={darkMode ? 'darkModeCard' : 'card'} style={{margin: "0 auto"}}>
             <Grid>
             <Grid.Row>
             <Grid.Column width = {1}>
@@ -78,6 +78,7 @@ function PostDetails({ allPosts, setPosts, handlePostDelete, loggedInUser }){
                     </Header>
                     {comments} 
                 </Comment.Group>
+
             </div>
             <span>
                 <Button icon labelPosition='left' onClick={toggleCommentForm}>

@@ -70,7 +70,8 @@ function UpAndDownVote({ post }){
     return (
         <div className='voteButtons'>
             <Button 
-            icon name="upVote" 
+            icon 
+            name="upVote" 
             style={upVoteClicked ? { color: 'green' } : { color: 'grey' }} 
             onClick={handleUpVote}
             >
@@ -81,7 +82,8 @@ function UpAndDownVote({ post }){
                 {voteCount || voteCount === 0  ? voteCount : null}
             </span>
             <Button 
-            icon name="downVote" 
+            icon 
+            name="downVote" 
             style={downVoteClicked ? { color: 'red' } : { color: 'grey' }} 
             onClick={handleDownVote}
             >
