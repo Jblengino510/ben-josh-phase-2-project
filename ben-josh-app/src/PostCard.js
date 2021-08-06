@@ -19,7 +19,8 @@ function PostCard({ post, darkMode, allPosts, setPosts, handlePostDelete }){
                     <Grid.Column width ={14}>
                         {/* <Link to={`/posts/${post.id}`} className="postLink"> */}
                             <div>
-                                <h3>{post.user.email}</h3>
+                                <em style={{float: 'right'}}>{post.dateCreated}</em>
+                                <h3>{post.user ? post.user.email : post.user.email}</h3>
                                 <h2>{post.title}</h2>
                                 <img src={post.image} alt={post.title}/>
                                 <p>{post.text}</p>

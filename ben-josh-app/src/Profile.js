@@ -1,5 +1,5 @@
 import { useHistory, Link } from "react-router-dom"
-import { Button, Grid, Card, Icon } from 'semantic-ui-react'
+import { Button, Grid, Card, Icon, Modal } from 'semantic-ui-react'
 import PostList from "./PostList";
 import CreatePost from "./CreatePost";
 
